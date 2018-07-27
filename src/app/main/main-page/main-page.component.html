@@ -1,0 +1,38 @@
+<section class="hero is-info is-fullheight is-bold">
+    <div class="hero-body">
+        <!-- Table to align buttons and search bar vertically -->
+        <table class="table">
+            <!-- Buttons inside the header -->
+            <thead>
+                <tr>
+                    <td class="has-text-centered">
+                        <button id="b-1" class="button is-medium has-text-white has-text-weight-semibold" type="submit">Add Recipe</button>
+                        <button id="b-2" class="button is-medium has-text-white has-text-weight-semibold" type="submit">My Recipes</button>
+                        <button id="b-3" class="button is-medium has-text-white has-text-weight-semibold" type="submit">Saved Recipes</button>
+                    </td>
+                </tr>
+            </thead>
+            <!-- Search abr inside the footer -->
+            <tfoot>
+                <tr>
+                    <td class="has-text-centered">
+                        <form class="findRecipeContainer" (ngSubmit)="processSearchForm()">
+                            <div class="field has-addons">
+                                <p class="control is-expanded">
+                                    <input class="input is-large" type="text" name="recipeName" placeholder="Find a recipe" [(ngModel)]="recipeName">
+                                </p>
+                                <p class="control has-icons">
+                                    <button id="b-4" class="button is-large has-text-white">
+                                        <span class="icon is-large">
+                                            <i class="fa fa-search"></i>
+                                        </span>
+                                    </button>
+                                </p>
+                            </div>
+                        </form>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</section>

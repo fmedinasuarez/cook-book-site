@@ -1,0 +1,62 @@
+.hero.is-info {
+    background: lightgray;
+}
+
+.hero.has-background-light {
+    background-image: url('/assets/img/bg-image6.jpg') !important;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+  }
+
+.subtitle.has-text-white {
+    text-shadow: 2px 2px black;
+}
+
+.input, .textarea {
+    border-color: darkgoldenrod;
+}
+
+.button {
+    background-color: darkgoldenrod;
+    border-color:white;
+    width: 30%;
+}
+
+.contactForm {
+    background: lightgray;
+    border-color: darkgoldenrod;
+    border-radius: 5px
+}
+
+.field {
+    padding-left: 5%;
+    padding-right: 5%;
+}
+#button {
+    padding-bottom: 5%;
+}
+
+#fieldName {
+    padding-top: 5%;
+}
+
+/*desktop*/
+.level-item {
+    width: 50%;
+}
+
+.container {
+    width: 80%;
+}
+
+/*mobile*/
+@media only screen and (max-width: 768px) {
+    .level-item {
+        width: 100%;
+    }
+    .container {
+        width: 90%;
+    }
+}
+

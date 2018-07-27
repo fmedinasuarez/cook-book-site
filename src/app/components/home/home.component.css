@@ -1,0 +1,29 @@
+.hero {
+  background-image: url('/assets/img/bg-image3.jpg') !important;
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+}
+
+/*mobile*/
+.findRecipeContainer {
+  width: 100%;
+}
+
+/*desktop*/
+@media only screen and (min-width: 768px) {
+  .findRecipeContainer {
+    padding-left: 20%;
+    padding-right: 20%;
+  }
+}
+
+.button {
+  border: none;
+  background-color: darkgoldenrod; 
+  width: 100%;
+}
+
+.input {
+  border-color: darkgoldenrod;
+}

@@ -1,0 +1,46 @@
+<nav class="navbar is-transparent">
+    <!-- logo/home -->
+    <div class="navbar-brand">
+        <a class="navbar-item has-text-dark has-text-weight-bold" routerLink="">
+            <span>Home</span>
+            <span class="icon is-small">
+                <i class="fa fa-home"></i>
+            </span>
+        </a>
+    </div>
+    <!--menu-->
+    <div class="navbar-menu">
+        <div class="navbar-end">
+            <a  *ngIf="!islogin" class="navbar-item has-text-dark has-text-weight-bold" routerLink='users'>Users</a>
+            <!--contact -->
+            <a class="navbar-item has-text-dark has-text-weight-bold" routerLink='contact'>
+                <span>Contact</span>
+                <span class="icon is-small">
+                    <i class="fa fa-envelope"></i>
+                </span>
+            </a>
+            <!--sign up -->
+            <a class="navbar-item has-text-dark has-text-weight-bold" routerLink='sign-up'>
+                <span>Sign Up</span>
+                <span class="icon is-small">
+                    <i class="fa fa-user-circle"></i>
+                </span>
+            </a>
+            <!--log in -->
+            <div class="navbar-item has-text-dark has-text-weight-bold">
+                <div class="dropdown is-right">
+                    <div class="dropdown-trigger">
+                        <a class="has-text-dark has-text-weight-bold" id="login" aria-haspopup="true" aria-controls="dropdown-menu4">
+                            <span>Log In</span>
+                            <span class="icon is-small">
+                                <i class="fa fa-caret-down" aria-hidden="true"></i>
+                            </span>
+                        </a>
+                    </div>
+                    <!--form to process the login data -->
+                    <app-log-in></app-log-in>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>

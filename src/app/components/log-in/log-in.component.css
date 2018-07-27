@@ -1,0 +1,16 @@
+.dropdown-menu {
+    width: 300px;
+}
+
+.container{
+    width: 100%;
+}
+
+.button {
+    background-color: darkgoldenrod;
+    border-color:white;
+}
+
+.input {
+    border-color: darkgoldenrod;
+}

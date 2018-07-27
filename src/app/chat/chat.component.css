@@ -1,0 +1,66 @@
+#contact {
+    position: fixed;
+    bottom: 0;
+    max-height: 80%;
+    overflow: auto;
+    padding-top: 40px;
+  }
+  
+  #contact .handle {
+    width: 150px;
+    height: 40px;
+    text-align: center;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    position: relative;
+    background: whitesmoke;
+    top: 0;
+    left: 50%;
+    margin-left: -55px;
+  }
+  
+  #contact h2 {
+    color: whitesmoke;
+    padding: 10px 0;
+    margin: 0;
+    font-size: 14px;
+    letter-spacing: 4px;
+  }
+  
+  #contact .contact-info {
+    width: 150px;
+    height: 300px;
+    text-align: center;
+    position: relative;
+    /*background: skyblue;*/
+    top: 0;
+    left: 50%;
+    margin-left: -55px;
+  }
+
+  .field {
+      bottom: 0;
+      width: 140px;
+      position: fixed;
+      padding-left: 7.5px;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+  }
+
+  .container{
+    width: 120px;
+    position: relative;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background: white;
+  }
+
+  #mainContainer{
+    width: 150px;
+    background: skyblue;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+

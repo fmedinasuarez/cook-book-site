@@ -1,0 +1,53 @@
+.hero.is-info {
+    background: lightgray;
+}
+
+.hero.has-background-light {
+    background-image: url('/assets/img/bg-image2.jpg') !important;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+  }
+
+.input, .textarea {
+    border-color: darkgoldenrod;
+}
+
+.button {
+    background-color: darkgoldenrod;
+    border-color:white;
+    width: 30%;
+}
+
+/*desktop*/
+.container {
+    padding-left: 30%;
+    padding-right: 30%;
+}
+
+/*mobile*/
+@media only screen and (max-width:768px){
+    .container {
+        padding-left: 0%;
+        padding-right: 0%;
+    }
+}
+
+.signupForm {
+    background: lightgray;
+    border-color: darkgoldenrod;
+    border-radius: 5px;
+}
+
+.field {
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+#button {
+    padding-bottom: 5%;
+}
+
+.subtitle {
+    padding-top: 5%;
+}

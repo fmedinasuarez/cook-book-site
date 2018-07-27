@@ -1,0 +1,47 @@
+<section class="hero is-info">
+    <div class="hero-body">  
+        <div class="container content has-text-centered">
+            <h1 class="title is-1 has-text-black">Contact us!</h1>
+        </div>
+    </div>
+</section>
+<section class="hero is-fullheight has-background-light">
+    <div class="hero-body">
+        <nav class="level">
+            <div class="level-item">
+                <div class="container">
+                    <p class="subtitle is-2 has-text-white">Tell us what you have on your mind. We are looking foward to hearing from you!</p>  
+                </div>
+            </div>
+            <div class="level-item">
+                <div class="container">
+                    <form class="contactForm is-dark" (ngSubmit)="processForm()">
+                        <div class="field" id="fieldName">
+                            <input type="text" name="name" class="input is-primary" placeholder="Your Name" [(ngModel)]="name" required minlength="3" #nameInput="ngModel">
+                            <div class="help is-error" *ngIf="nameInput.invalid && nameInput.dirty">
+                                Name is required and needs to be at least 3 characters long.
+                            </div>
+                        </div>
+                        
+                        <div class="field">
+                            <input type="email" name="email" class="input is-primary" placeholder="Your Email" [(ngModel)]="email" required email #emailInput="ngModel">
+                            <div class="help is-error" *ngIf="emailInput.invalid && emailInput.dirty">
+                                Needs to be a valid email.
+                            </div>
+                        </div>
+                        
+                        <div class="field">
+                            <textarea class="textarea is-primary" name="message" placeholder="What's on your mind?" [(ngModel)]="message" required #messageInput="ngModel"></textarea>
+                                <div class="help is-error" *ngIf="messageInput.invalid && messageInput.dirty">
+                                    Your message is required!
+                                </div>
+                        </div><br>
+                        <div class="field" id="button">
+                            <button type="submit" class="button is-medium has-text-white has-text-weight-semibold">Send</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </div>
+</section>
