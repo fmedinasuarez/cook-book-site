@@ -19,17 +19,17 @@
     width: 30%;
 }
 
-/*desktop*/
+/*mobile*/
 .container {
-    padding-left: 30%;
-    padding-right: 30%;
+    padding-left: 0;
+    padding-right: 0;
 }
 
-/*mobile*/
-@media only screen and (max-width:768px){
+/*desktop*/
+@media only screen and (min-width:768px){
     .container {
-        padding-left: 0%;
-        padding-right: 0%;
+        padding-left: 30%;
+        padding-right: 30%;
     }
 }
 

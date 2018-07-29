@@ -4,8 +4,8 @@
             <div class="column is-4" *ngFor="let u of users | async">
                 <div class="card">
                     <div class="card-content">
-                        <a routerLink="/users/{{ u.login }}">{{ u.login }}</a><br>
-                        <a routerLink="/users/{{ u.login }}"><img [src]="u.avatar_url"></a>
+                        <a routerLink="{{ u.login }}">{{ u.login }}</a><br>
+                        <a routerLink="{{ u.login }}"><img [src]="u.avatar_url"></a>
                     </div>      
                 </div>      
             </div>

@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainPageComponent implements OnInit {
   recipeName;
+
   constructor() { }
 
   ngOnInit() {
+    /*Allow access if user is loged in. If not go to home page
+    if(!this.userService.getUserIsLogin()){
+      this.router.navigate(['']);
+    }*/
   }
 
   processSearchForm(){

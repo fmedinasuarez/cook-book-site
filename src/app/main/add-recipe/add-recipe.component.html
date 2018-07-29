@@ -1,0 +1,50 @@
+<section class="hero is-info">
+    <div class="hero-body">  
+        <div class="container content has-text-centered">
+            <h1 class="title is-1 has-text-black">Add recipe</h1>
+        </div>
+    </div>
+</section>
+<section class="hero is-fullheight has-background-light">
+    <div class="hero-body">
+        <div class="container">
+            <form id="signupForm" (ngSubmit)="processForm()">
+                <!--title input-->
+                <div class="field">
+                    <input type="text" name="title" class="input is-primary is-large" placeholder="Title" [(ngModel)]="title" required minlength="3" #titleInput="ngModel">
+                </div>
+                <!--ingredients-->
+                <div class="field" id="iLabel">
+                    <label class="label has-text-dark has-text-weight-semibold">List of ingredients:</label>
+                </div>
+                <div class="field has-addons" id="fIng">
+                    <p class="control is-expanded">
+                        <input type="text" name="ingredient0" class="input is-primary" placeholder="Ingredient: 100gr. flour" [(ngModel)]="ingredients[0]" required minlength="3" #ingredient0Input="ngModel">
+                    </p>
+                    <p class="control has-icons">
+                        <button class="button has-text-white" id="b1-1" placeholder="Delete ingredient">
+                            <span class="icon">
+                                <i class="fa fa-times"></i>
+                            </span>
+                        </button>
+                    </p>
+                </div>
+                <!--new ingredient button-->
+                <div class="field" id="fb-2">
+                    <button type="button" class="button has-text-white has-text-weight-semibold" id="b-2">New ingredient</button>
+                </div>
+                <!--steps-->
+                <div class="field" id="sLabel">
+                    <label class="label has-text-dark has-text-weight-semibold">Steps</label>
+                </div>
+                <div class="field" id="textAreaField">
+                    <textarea class="textarea is-primary" name="steps" placeholder="Describe how you made it" [(ngModel)]="steps" required #stepsInput="ngModel"></textarea>
+                </div>
+                <!--publish button-->
+                <div class="field" id="fb-3">
+                    <button type="submit" class="button is-medium has-text-white has-text-weight-semibold" id="b-3">Publish</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

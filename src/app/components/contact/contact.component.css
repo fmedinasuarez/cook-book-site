@@ -43,20 +43,29 @@
 
 /*desktop*/
 .level-item {
-    width: 50%;
+    width: 100%;
 }
 
 .container {
-    width: 80%;
+    width: 100%;
 }
 
 /*mobile*/
-@media only screen and (max-width: 768px) {
+@media only screen and (min-width: 768px) {
+    .level-item {
+        width: 50%;
+    }
+    .container {
+        width: 80%;
+    }
+}
+
+/*ipad*/
+@media only screen and (width: 768px) {
     .level-item {
         width: 100%;
     }
     .container {
-        width: 90%;
+        width: 60%;
     }
 }
-

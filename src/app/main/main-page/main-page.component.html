@@ -6,13 +6,19 @@
             <thead>
                 <tr>
                     <td class="has-text-centered">
-                        <button id="b-1" class="button is-medium has-text-white has-text-weight-semibold" type="submit">Add Recipe</button>
-                        <button id="b-2" class="button is-medium has-text-white has-text-weight-semibold" type="submit">My Recipes</button>
-                        <button id="b-3" class="button is-medium has-text-white has-text-weight-semibold" type="submit">Saved Recipes</button>
+                        <a routerLink='add-recipe'>
+                            <button id="b-1" class="button is-medium has-text-white has-text-weight-semibold" type="submit">Add Recipe</button>
+                        </a>
+                        <a routerLink='my-recipes'>
+                            <button id="b-2" class="button is-medium has-text-white has-text-weight-semibold" type="submit">My Recipes</button>
+                        </a>
+                        <a routerLink='saved-recipes'>
+                            <button id="b-3" class="button is-medium has-text-white has-text-weight-semibold" type="submit">Saved Recipes</button>
+                        </a>
                     </td>
                 </tr>
             </thead>
-            <!-- Search abr inside the footer -->
+            <!-- Search bar inside the footer -->
             <tfoot>
                 <tr>
                     <td class="has-text-centered">
