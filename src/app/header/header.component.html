@@ -7,9 +7,15 @@
                 <i class="fa fa-home"></i>
             </span>
         </a>
+        <!--navbar burger for mobile devices-->
+        <div class="navbar-burger is-large" id="navbar-burger-id">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </div>
     <!--menu-->
-    <div class="navbar-menu">
+    <div class="navbar-menu has-text-centered" id="navbar-menu-id">
         <div class="navbar-end">
             <a class="navbar-item has-text-dark has-text-weight-bold" routerLink='users'>Users</a>
             <!--contact -->
@@ -27,20 +33,12 @@
                 </span>
             </a>
             <!--log in -->
-            <div class="navbar-item has-text-dark has-text-weight-bold">
-                <div class="dropdown is-right">
-                    <div class="dropdown-trigger">
-                        <a class="has-text-dark has-text-weight-bold" id="login" aria-haspopup="true" aria-controls="dropdown-menu4">
-                            <span>Log In</span>
-                            <span class="icon is-small">
-                                <i class="fa fa-caret-down" aria-hidden="true"></i>
-                            </span>
-                        </a>
-                    </div>
-                    <!--form to process the login data -->
-                    <app-log-in></app-log-in>
-                </div>
-            </div>
+            <a class="navbar-item has-text-dark has-text-weight-bold" routerLink='log-in'>
+                <span>Log in</span>
+                <span class="icon is-small">
+                    <i class="fa fa-sign-in"></i>
+                </span>
+            </a>
         </div>
     </div>
 </nav>

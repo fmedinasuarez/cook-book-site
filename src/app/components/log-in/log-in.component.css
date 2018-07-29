@@ -1,16 +1,57 @@
-.dropdown-menu {
-    width: 300px;
+.hero.is-info {
+    background: lightgray;
 }
 
-.container{
-    width: 100%;
+.hero.has-background-light {
+    background-image: url('/assets/img/bg-image2.jpg') !important;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+}
+
+.input, .textarea {
+    border-color: darkgoldenrod;
 }
 
 .button {
     background-color: darkgoldenrod;
     border-color:white;
+    width: 30%;
 }
 
-.input {
+/*mobile*/
+.container {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/*desktop*/
+@media only screen and (min-width:768px){
+    .container {
+        padding-left: 30%;
+        padding-right: 30%;
+    }
+}
+
+.signupForm {
+    background: lightgray;
     border-color: darkgoldenrod;
+    border-radius: 5px;
+}
+
+.field {
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+#button {
+    padding-bottom: 5%;
+}
+
+.subtitle {
+    padding-top: 5%;
+}
+
+#fEmail, #fPass{
+    padding-top: 5%;
 }

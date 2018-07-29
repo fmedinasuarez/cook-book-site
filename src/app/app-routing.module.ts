@@ -21,6 +21,10 @@ const routes: Routes = [
     component: SignUpComponent
   },
   {
+    path: 'log-in',
+    component: LogInComponent,
+  },
+  {
     path: 'users',
     loadChildren: 'src/app/users/users.module#UsersModule'
   },

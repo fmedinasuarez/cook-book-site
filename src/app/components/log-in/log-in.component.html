@@ -1,40 +1,44 @@
-<div class="dropdown-menu" id="dropdown-menu4" role="menu">
-    <div class="dropdown-content">
-        <div class="dropdown-item">
-            <!--form to process data login-->
-            <div class="container">
-                <form (ngSubmit)="processLoginForm()">
-                    <div class="field">
-                        <p class="control has-icons-left">
-                            <input class="input is-primary" type="text" name="email" placeholder="Email" [(ngModel)]="email">
-                            <span class="icon is-small is-left">
-                                <i class="fa fa-envelope"></i>
-                            </span>
-                        </p>
-                    </div>
-                    <div class="field">
-                        <p class="control has-icons-left">
-                            <input class="input is-primary" type="password" name="password" placeholder="Password" [(ngModel)]="password">
-                            <span class="icon is-small is-left">
-                                <i class="fa fa-lock"></i>
-                            </span>
-                        </p>
-                    </div>
-                    <div class="field">
-                        <label class="checkbox">
-                            <input type="checkbox"> Remember me
-                        </label><br>
-                    </div>
-                    <div class="field">
-                        <a class="text">Forgot your password?</a>
-                    </div>
-                    <div class="field">
-                        <p class="control">
-                            <button class="button has-text-white has-text-weight-semibold" routerLink='main'>Log in</button>
-                        </p>
-                    </div>
-                </form>
-            </div>
+<section class="hero is-info">
+    <div class="hero-body">  
+        <div class="container content has-text-centered">
+            <h1 class="title is-1 has-text-black">Log In</h1>
         </div>
     </div>
-</div>
+</section>
+<section class="hero is-fullheight has-background-light">
+    <div class="hero-body">
+        <div class="container">
+            <form class="signupForm" (ngSubmit)="processLoginForm()">
+                <div class="field" id="fEmail">
+                    <p class="control has-icons-left">
+                        <input class="input is-primary" type="text" name="email" placeholder="Email" [(ngModel)]="email">
+                        <span class="icon is-small is-left">
+                            <i class="fa fa-envelope"></i>
+                        </span>
+                    </p>
+                </div>
+                <div class="field" id="fPass">
+                    <p class="control has-icons-left">
+                        <input class="input is-primary" type="password" name="password" placeholder="Password" [(ngModel)]="password">
+                        <span class="icon is-small is-left">
+                            <i class="fa fa-lock"></i>
+                        </span>
+                    </p>
+                </div>
+                <div class="field">
+                    <label class="checkbox">
+                        <input type="checkbox"> Remember me
+                    </label><br>
+                </div>
+                <div class="field">
+                    <a class="text">Forgot your password?</a>
+                </div>
+                <div class="field" id="button">
+                    <p class="control">
+                        <button class="button has-text-white has-text-weight-semibold" routerLink='main'>Log in</button>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

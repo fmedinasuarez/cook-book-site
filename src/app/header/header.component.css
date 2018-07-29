@@ -4,7 +4,10 @@
     padding-left: 10px;
 }
 
+.navbar-menu{
+    background:lightgray;
+}
+
 span {
     margin-right: 5px;
 }
-    

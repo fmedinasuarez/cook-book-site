@@ -13,10 +13,6 @@ export class LogInComponent implements OnInit {
   constructor(private userService: UserService) { }
 
   ngOnInit() {
-    var dropdownMenu = document.querySelector('.dropdown-menu');
-    dropdownMenu.addEventListener('click', function(event) {
-      event.stopPropagation();
-    });
   }
 
   processLoginForm(){
