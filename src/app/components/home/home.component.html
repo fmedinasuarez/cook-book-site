@@ -1,20 +1,31 @@
-<section class="hero is-info is-fullheight is-bold">
+<section class="hero is-fullheight has-background-light">
     <div class="hero-body">
-        <div class="container">
-            <form class="findRecipeContainer" (ngSubmit)="processSearchForm()">
-                <div class="field has-addons">
-                    <p class="control is-expanded">
-                        <input class="input is-large" type="text" name="recipeName" placeholder="Find a recipe" [(ngModel)]="recipeName">
-                    </p>
-                    <p class="control has-icons">
-                        <button class="button is-large has-text-white">
-                            <span class="icon is-large">
-                                <i class="fa fa-search"></i>
-                            </span>
-                        </button>
-                    </p>
-                </div>
-            </form>
+        <table class="table">
+            <thead>
+                <tr>
+                    <td class="has-text-centered">
+                        <h1 class="title is-1 has-text-white">Cookbook</h1>
+                        <p class="subtitle has-text-white">The website that helps you to have and share all your cooking inspirations</p>   
+                    </td>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <td class="has-text-centered">
+                        <app-search-bar></app-search-bar>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+        <div id="learnMoreContainer">
+            <a id="learnMoreIcon" pageScroll href="#learnMore">
+                <i class="fa fa-chevron-circle-down fa-4x"></i>
+            </a>
         </div>
+    </div>
+</section>
+<section class="hero" id="learnMore">
+    <div class="hero-body">
+        <p>Talk about the app</p>
     </div>
 </section>

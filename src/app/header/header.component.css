@@ -1,13 +1,17 @@
 .navbar {
-    background: lightgray;
+    background: white;
     padding-right: 10px;
     padding-left: 10px;
 }
 
 .navbar-menu{
-    background:lightgray;
+    background:white;
 }
 
 span {
     margin-right: 5px;
+}
+
+#search-bar-container {
+    width: 50%;
 }

@@ -5,12 +5,15 @@ import { FormsModule }   from '@angular/forms';
 import { MainRoutingModule } from './main-routing.module';
 import { MainPageComponent } from './main-page/main-page.component';
 import { AddRecipeComponent } from './add-recipe/add-recipe.component';
+import { SearchBarModule } from '../search-bar/search-bar.module';
+
 
 @NgModule({
   imports: [
     CommonModule,
     MainRoutingModule,
-    FormsModule
+    FormsModule,
+    SearchBarModule
   ],
   declarations: [
     MainPageComponent,

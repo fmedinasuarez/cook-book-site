@@ -1,5 +1,5 @@
 .hero.is-info {
-    background: lightgray;
+    background: white;
 }
 
 .hero.has-background-light {
@@ -14,7 +14,7 @@
 }
 
 .input, .textarea {
-    border-color: darkgoldenrod;
+    border-color:grey;
 }
 
 .button {
@@ -23,10 +23,10 @@
     width: 30%;
 }
 
-.contactForm {
-    background: lightgray;
+#contactForm {
+    background: rgb(235, 235, 235, 0.6);
     border-color: darkgoldenrod;
-    border-radius: 5px
+    border-radius: 5px;
 }
 
 .field {
@@ -38,6 +38,10 @@
 }
 
 #fieldName {
+    padding-top: 5%;
+}
+
+.subtitle {
     padding-top: 5%;
 }
 

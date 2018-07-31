@@ -1,7 +1,3 @@
-.hero.is-info {
-    background: lightgray;
-}
-
 .hero.has-background-light {
     background-image: url('/assets/img/bg-image2.jpg') !important;
     background-size: cover;
@@ -10,7 +6,7 @@
   }
 
 .input, .textarea {
-    border-color: darkgoldenrod;
+    border-color: grey
 }
 
 .button {
@@ -34,7 +30,7 @@
 }
 
 .signupForm {
-    background: lightgray;
+    background: rgb(235, 235, 235, 0.6);
     border-color: darkgoldenrod;
     border-radius: 5px;
 }

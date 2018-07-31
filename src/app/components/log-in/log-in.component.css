@@ -1,5 +1,5 @@
 .hero.is-info {
-    background: lightgray;
+    background: white;
 }
 
 .hero.has-background-light {
@@ -10,7 +10,7 @@
 }
 
 .input, .textarea {
-    border-color: darkgoldenrod;
+    border-color: grey
 }
 
 .button {
@@ -33,8 +33,8 @@
     }
 }
 
-.signupForm {
-    background: lightgray;
+#signupForm {
+    background: rgb(235, 235, 235, 0.6);;
     border-color: darkgoldenrod;
     border-radius: 5px;
 }

@@ -1,29 +1,30 @@
-.hero {
+.hero.has-background-light {
   background-image: url('/assets/img/bg-image3.jpg') !important;
   background-size: cover;
   background-position: center center;
   background-attachment: fixed;
 }
 
-/*mobile*/
-.findRecipeContainer {
+.table {
   width: 100%;
+  background: none;
+  margin-top: -10%;
 }
 
-/*desktop*/
-@media only screen and (min-width: 768px) {
-  .findRecipeContainer {
-    padding-left: 20%;
-    padding-right: 20%;
-  }
+.title, .subtitle {
+  text-shadow: 2px 2px #000000;
 }
 
-.button {
-  border: none;
-  background-color: darkgoldenrod; 
+#learnMoreContainer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
   width: 100%;
+  overflow: auto;
 }
 
-.input {
-  border-color: darkgoldenrod;
+#learnMoreIcon {
+  color: white;
+  position: relative;
+  left: 45%;
 }

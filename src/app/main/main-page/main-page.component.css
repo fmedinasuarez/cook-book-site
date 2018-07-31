@@ -8,6 +8,7 @@
   /*mobile*/
   .findRecipeContainer{
     width: 100%;
+    margin-top: 10%;
   }
   
   /*desktop*/
@@ -31,6 +32,7 @@
   .table {
       width: 100%;
       background: none;
+      margin-top: -10%;
   }
 
   /*mobile*/
@@ -56,4 +58,8 @@
       padding-left: 17%;
       padding-right: 17%;
     }
+  }
+
+  .title, .subtitle {
+    text-shadow: 2px 2px #000000;
   }

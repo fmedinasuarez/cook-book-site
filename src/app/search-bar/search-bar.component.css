@@ -1,0 +1,31 @@
+.input {
+    border-color: darkgoldenrod;
+  }
+  
+/*mobile*/
+#findRecipeContainer{
+    margin-top: 10%;
+    width: 100%;
+}
+
+/*desktop*/
+@media only screen and (min-width: 768px) {
+    #findRecipeContainer {
+        padding-left: 20%;
+        padding-right: 20%;
+    }   
+}
+  
+/*ipad*/
+@media only screen and (width: 768px) {
+    #findRecipeContainer {
+        padding-left: 17%;
+        padding-right: 17%;
+    }
+}
+
+.button {
+    background: darkgoldenrod;
+    width: 100%;
+    border: none;
+}

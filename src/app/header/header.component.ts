@@ -48,7 +48,7 @@ export class HeaderComponent implements OnInit {
 
     /* header transition animation when user scroll 1/3 of height screen*/
     var y = screen.height;
-    var yShow = y/3;
+    var yShow = y/4;
     var ok = false;
 
     window.addEventListener('scroll',function(){
@@ -74,9 +74,9 @@ export class HeaderComponent implements OnInit {
             html.classList.remove('has-navbar-fixed-top');
             navbar.classList.remove('is-fixed-top');
           }
-          (navbar as HTMLElement).style.background = 'lightgray';
+          (navbar as HTMLElement).style.background = 'white';
           /*navbar burger*/
-          navbarMenuId.style.background = 'lightgray';
+          navbarMenuId.style.background = 'white';
           for(var i=0; i<navbarItems.length; i++) {
             navbarItems[i].classList.remove('has-text-white');
             navbarItems[i].classList.add('has-text-dark');
@@ -85,5 +85,19 @@ export class HeaderComponent implements OnInit {
         }
       }
     })
+
+    /*var searchBarInput = document.querySelector('.input');
+    searchBarInput.classList.remove('is-large');
+    searchBarInput.classList.add('is-small');
+
+    var findForm = document.getElementById('findRecipeContainer');
+    findForm.style.marginTop = '0';
+    findForm.style.paddingLeft = '0';
+    findForm.style.paddingRight = '0';
+
+    var searchButton = document.getElementById("searchButton");
+    searchButton.classList.remove('is-large');
+    searchButton.classList.add('is-small');*/
+
   }
 }

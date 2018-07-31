@@ -6,6 +6,9 @@
             <thead>
                 <tr>
                     <td class="has-text-centered">
+                        <h1 class="title is-1 has-text-white">Cookbook</h1>
+                        <p class="subtitle has-text-white">The website that helps you to have and share all your cooking inspirations</p>
+                        
                         <a routerLink='add-recipe'>
                             <button id="b-1" class="button is-medium has-text-white has-text-weight-semibold" type="submit">Add Recipe</button>
                         </a>
@@ -22,20 +25,7 @@
             <tfoot>
                 <tr>
                     <td class="has-text-centered">
-                        <form class="findRecipeContainer" (ngSubmit)="processSearchForm()">
-                            <div class="field has-addons">
-                                <p class="control is-expanded">
-                                    <input class="input is-large" type="text" name="recipeName" placeholder="Find a recipe" [(ngModel)]="recipeName">
-                                </p>
-                                <p class="control has-icons">
-                                    <button id="b-4" class="button is-large has-text-white">
-                                        <span class="icon is-large">
-                                            <i class="fa fa-search"></i>
-                                        </span>
-                                    </button>
-                                </p>
-                            </div>
-                        </form>
+                        <app-search-bar></app-search-bar>
                     </td>
                 </tr>
             </tfoot>

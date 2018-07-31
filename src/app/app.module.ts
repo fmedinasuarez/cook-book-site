@@ -16,6 +16,7 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { LogInComponent } from './components/log-in/log-in.component';
 import {Ng2PageScrollModule} from 'ng2-page-scroll';
 import { ChatComponent } from './chat/chat.component';
+import { SearchBarModule } from './search-bar/search-bar.module';
 
 @NgModule({
   declarations: [
@@ -26,14 +27,15 @@ import { ChatComponent } from './chat/chat.component';
     ContactComponent,
     SignUpComponent,
     LogInComponent,
-    ChatComponent
+    ChatComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    Ng2PageScrollModule
+    Ng2PageScrollModule,
+    SearchBarModule
   ],
   providers: [
     UserService

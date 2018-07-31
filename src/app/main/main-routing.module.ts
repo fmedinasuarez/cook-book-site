@@ -14,11 +14,11 @@ const routes: Routes = [
   },
   {
     path: 'my-recipes',
-    loadChildren: 'src/app/main/recipes/recipes.module#RecipesModule',
+    loadChildren: 'src/app/recipes/recipes.module#RecipesModule',
   },
   {
     path: 'saved-recipes',
-    loadChildren: 'src/app/main/recipes/recipes.module#RecipesModule',
+    loadChildren: 'src/app/recipes/recipes.module#RecipesModule',
   }
 
 ];

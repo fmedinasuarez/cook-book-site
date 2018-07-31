@@ -1,5 +1,5 @@
 .hero.is-info {
-    background: lightgray;
+    background: white;
 }
 .hero.has-background-light {
     background-image: url('/assets/img/bg-image7.jpg') !important;
@@ -58,7 +58,7 @@
 }
 
 #signupForm {
-    background: lightgray;
+    background: rgb(235, 235, 235, 0.6);
     border-color: darkgoldenrod;
     border-radius: 5px;
 }

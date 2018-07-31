@@ -2,27 +2,32 @@
     <!-- logo/home -->
     <div class="navbar-brand">
         <a class="navbar-item has-text-dark has-text-weight-bold" routerLink="">
-            <span>Home</span>
+            <span>Cookbook</span>
             <span class="icon is-small">
                 <i class="fa fa-home"></i>
             </span>
         </a>
         <!--navbar burger for mobile devices-->
-        <div class="navbar-burger is-large" id="navbar-burger-id">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
     </div>
     <!--menu-->
     <div class="navbar-menu has-text-centered" id="navbar-menu-id">
+        <!--<div class="navbar-item is-expanded" id="search-bar-item">
+            <div class="container" id="search-bar-container">
+                <app-search-bar></app-search-bar>
+            </div>
+        </div>-->
         <div class="navbar-end">
-            <a class="navbar-item has-text-dark has-text-weight-bold" routerLink='users'>Users</a>
-            <!--contact -->
-            <a class="navbar-item has-text-dark has-text-weight-bold" routerLink='contact'>
-                <span>Contact</span>
+            <!--<a class="navbar-item has-text-dark has-text-weight-bold" routerLink='users'>Users</a>-->
+            <!--log in -->
+            <a class="navbar-item has-text-dark has-text-weight-bold" routerLink='log-in'>
+                <span>Log In</span>
                 <span class="icon is-small">
-                    <i class="fa fa-envelope"></i>
+                    <i class="fa fa-sign-in"></i>
                 </span>
             </a>
             <!--sign up -->
@@ -32,11 +37,11 @@
                     <i class="fa fa-user-circle"></i>
                 </span>
             </a>
-            <!--log in -->
-            <a class="navbar-item has-text-dark has-text-weight-bold" routerLink='log-in'>
-                <span>Log in</span>
+            <!--contact -->
+            <a class="navbar-item has-text-dark has-text-weight-bold" routerLink='contact'>
+                <span>Contact</span>
                 <span class="icon is-small">
-                    <i class="fa fa-sign-in"></i>
+                    <i class="fa fa-envelope"></i>
                 </span>
             </a>
         </div>

@@ -32,6 +32,10 @@ const routes: Routes = [
     path: 'main',
     loadChildren: 'src/app/main/main.module#MainModule'
   },
+  {
+    path: 'recipes',
+    loadChildren: 'src/app/recipes/recipes.module#RecipesModule'
+  },
 ];
 
 @NgModule({
