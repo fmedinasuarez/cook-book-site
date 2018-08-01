@@ -7,9 +7,9 @@ import { HttpClient } from '@angular/common/http';
 export class UserService {
 
   apiUrl = 'https://api.github.com/users';
-  userIsLogin = false;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   getUsers() {
     return this.http.get(`${this.apiUrl}`);
@@ -18,13 +18,13 @@ export class UserService {
   getUser(username:string) {
     return this.http.get(`${this.apiUrl}/${username}`)
   }
-  /*
-  setUserIsLogin(userIsLogin){
-    this.userIsLogin = userIsLogin;
+
+  signUpUser(user){
+    return this.http.post('http://localhost:3000/signup', user);
   }
 
-  getUserIsLogin() {
-    return this.userIsLogin;
-  }*/
+  loginUser(credentials) {
+    return this.http.post('http://localhost:3000/login', credentials);
+  }
 
 }

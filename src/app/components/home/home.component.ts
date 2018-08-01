@@ -12,6 +12,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
+    localStorage.setItem('user-session','');
   }
   
   processSearchForm(){

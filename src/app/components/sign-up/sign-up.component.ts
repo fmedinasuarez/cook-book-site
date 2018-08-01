@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { UserListComponent } from '../../users/user-list/user-list.component';
+import { UserService } from '../../user.service';
+import { Router } from '../../../../node_modules/@angular/router';
 
 @Component({
   selector: 'app-sign-up',
@@ -8,17 +11,32 @@ import { Component, OnInit } from '@angular/core';
 export class SignUpComponent implements OnInit {
 
   name;
-  surname;
+  sureName;
   email;
   password;
 
-  constructor() { }
+  success;
+  status;
+
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {
   }
 
-  processForm(){
-    const allInfo = `Name: ${this.name}. Surname: ${this.surname}.Email: ${this.email}. Password: ${this.password}`;
-    alert(allInfo);
+  signUpForm(){
+    var user = {
+      "name": this.name,
+      "sureName": this.sureName,
+      "email": this.email,
+      "password": this.password,
+    };
+
+    this.userService.signUpUser(user).subscribe(res => {
+      this.success = res['success'];
+      this.status = res['status'];
+      if(this.status == 200) {
+        this.router.navigate(['/main']);
+      }
+    });
   }
 }

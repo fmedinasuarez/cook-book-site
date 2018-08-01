@@ -8,8 +8,11 @@ import { Router } from '../../../../node_modules/@angular/router';
   styleUrls: ['log-in.component.css']
 })
 export class LogInComponent implements OnInit {
-  email;
-  password;
+  email="";
+  password="";
+
+  success;
+  status;
 
   constructor(private userService: UserService, private router: Router) { }
 
@@ -17,10 +20,20 @@ export class LogInComponent implements OnInit {
   }
 
   processLoginForm(){
-    /*procces data and cominucate with server*/
-    const allInfo = `Email: ${this.email}. Password: ${this.password}`;
-    alert(allInfo);
-    this.router.navigate(['/main']);
-  }
+    var credentials = {
+      "email": this.email,
+      "password": this.password
+    }
 
+    this.userService.loginUser(credentials).subscribe( res => {
+      console.log(res);
+      this.success = res['success'];
+      this.status = res['status'];
+
+      if(this.status == 200) {
+        localStorage.setItem('user-session','is-logged-in');
+        this.router.navigate(['/main']);
+      }
+    })    
+  }
 }
