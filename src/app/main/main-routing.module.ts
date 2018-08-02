@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { MainPageComponent } from './main-page/main-page.component';
 import { AddRecipeComponent } from './add-recipe/add-recipe.component';
+import { AuthGuardIsLoggedInService } from '../auth-guard-is-logged-in.service';
 
 const routes: Routes = [
   {
@@ -11,14 +12,17 @@ const routes: Routes = [
   {
     path: 'add-recipe',
     component: AddRecipeComponent,
+    canActivate: [AuthGuardIsLoggedInService]
   },
   {
     path: 'my-recipes',
     loadChildren: 'src/app/recipes/recipes.module#RecipesModule',
+    canActivate: [AuthGuardIsLoggedInService]
   },
   {
     path: 'saved-recipes',
     loadChildren: 'src/app/recipes/recipes.module#RecipesModule',
+    canActivate: [AuthGuardIsLoggedInService]
   }
 
 ];

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../user.service';
-import { Router } from '../../../../node_modules/@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-log-in',
@@ -31,7 +31,7 @@ export class LogInComponent implements OnInit {
       this.status = res['status'];
 
       if(this.status == 200) {
-        localStorage.setItem('user-session','is-logged-in');
+        this.userService.setLoggedIn(true);
         this.router.navigate(['/main']);
       }
     })    

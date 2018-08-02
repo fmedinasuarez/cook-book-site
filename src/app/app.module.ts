@@ -17,6 +17,8 @@ import { LogInComponent } from './components/log-in/log-in.component';
 import {Ng2PageScrollModule} from 'ng2-page-scroll';
 import { ChatComponent } from './chat/chat.component';
 import { SearchBarModule } from './search-bar/search-bar.module';
+import { AuthGuardIsLoggedInService } from './auth-guard-is-logged-in.service';
+import { AuthGuardIsLoggedOutService } from './auth-guard-is-logged-out.service';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { SearchBarModule } from './search-bar/search-bar.module';
     SearchBarModule
   ],
   providers: [
-    UserService
+    UserService,
+    AuthGuardIsLoggedInService,
+    AuthGuardIsLoggedOutService,
   ],
   bootstrap: [AppComponent]
 })

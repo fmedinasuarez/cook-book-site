@@ -11,18 +11,19 @@
             <form id="signupForm" (ngSubmit)="processForm()">
                 <!--title input-->
                 <div class="field">
-                    <input type="text" name="title" class="input is-primary is-large" placeholder="Title" [(ngModel)]="title" required minlength="3" #titleInput="ngModel">
+                    <input type="text" name="title" class="input is-primary is-large" placeholder="Title" [(ngModel)]="title" required #titleInput="ngModel">
                 </div>
                 <!--ingredients-->
                 <div class="field" id="iLabel">
                     <label class="label has-text-dark has-text-weight-semibold">List of ingredients:</label>
                 </div>
-                <div class="field has-addons" id="fIng">
+                
+                <div class="field has-addons" id="fIng" name="fIng">
                     <p class="control is-expanded">
-                        <input type="text" name="ingredient0" class="input is-primary" placeholder="Ingredient: 100gr. flour" [(ngModel)]="ingredients[0]" required minlength="3" #ingredient0Input="ngModel">
+                        <input type="text" name="ingredient0" class="input is-primary" placeholder="Ingredient: 100gr. flour" [(ngModel)]="ingredients[0]" required #ingredient0Input="ngModel">
                     </p>
                     <p class="control has-icons">
-                        <button class="button has-text-white" id="b1-1" placeholder="Delete ingredient">
+                        <button class="button has-text-white" id="b1-1">
                             <span class="icon">
                                 <i class="fa fa-times"></i>
                             </span>

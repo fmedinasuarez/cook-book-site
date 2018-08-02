@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserListComponent } from '../../users/user-list/user-list.component';
 import { UserService } from '../../user.service';
-import { Router } from '../../../../node_modules/@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',

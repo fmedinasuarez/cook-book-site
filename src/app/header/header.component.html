@@ -1,7 +1,13 @@
 <nav class="navbar is-transparent">
     <!-- logo/home -->
     <div class="navbar-brand">
-        <a class="navbar-item has-text-dark has-text-weight-bold" routerLink="">
+        <a *ngIf="!isLoggedIn" class="navbar-item has-text-dark has-text-weight-bold" routerLink="">
+            <span>Cookbook</span>
+            <span class="icon is-small">
+                <i class="fa fa-home"></i>
+            </span>
+        </a>
+        <a *ngIf="isLoggedIn" class="navbar-item has-text-dark has-text-weight-bold" routerLink="/main">
             <span>Cookbook</span>
             <span class="icon is-small">
                 <i class="fa fa-home"></i>
@@ -23,18 +29,25 @@
         </div>-->
         <div class="navbar-end">
             <!--<a class="navbar-item has-text-dark has-text-weight-bold" routerLink='users'>Users</a>-->
+            <!--sign up -->
+            <a *ngIf="!isLoggedIn" class="navbar-item has-text-dark has-text-weight-bold" routerLink='sign-up'>
+                <span>Sign Up</span>
+                <span class="icon is-small">
+                    <i class="fa fa-user-circle"></i>
+                </span>
+            </a>
             <!--log in -->
-            <a class="navbar-item has-text-dark has-text-weight-bold" routerLink='log-in'>
+            <a *ngIf="!isLoggedIn" class="navbar-item has-text-dark has-text-weight-bold" routerLink='log-in'>
                 <span>Log In</span>
                 <span class="icon is-small">
                     <i class="fa fa-sign-in"></i>
                 </span>
             </a>
-            <!--sign up -->
-            <a class="navbar-item has-text-dark has-text-weight-bold" routerLink='sign-up'>
-                <span>Sign Up</span>
+            <!--log out -->
+            <a *ngIf="isLoggedIn" class="navbar-item has-text-dark has-text-weight-bold" (click)="logOut()">
+                <span>Log Out</span>
                 <span class="icon is-small">
-                    <i class="fa fa-user-circle"></i>
+                    <i class="fa fa-sign-out"></i>
                 </span>
             </a>
             <!--contact -->

@@ -4,13 +4,15 @@ import { HomeComponent } from './components/home/home.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { LogInComponent } from './components/log-in/log-in.component';
-import { AddRecipeComponent } from './main/add-recipe/add-recipe.component';
+import { AuthGuardIsLoggedInService } from './auth-guard-is-logged-in.service';
+import { AuthGuardIsLoggedOutService } from './auth-guard-is-logged-out.service';
 
 const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    component: HomeComponent
+    component: HomeComponent,
+    canActivate: [AuthGuardIsLoggedOutService]
   },
   {
     path: 'contact',
@@ -18,11 +20,13 @@ const routes: Routes = [
   },
   {
     path: 'sign-up',
-    component: SignUpComponent
+    component: SignUpComponent,
+    canActivate: [AuthGuardIsLoggedOutService]
   },
   {
     path: 'log-in',
     component: LogInComponent,
+    canActivate: [AuthGuardIsLoggedOutService]
   },
   {
     path: 'users',
@@ -30,7 +34,8 @@ const routes: Routes = [
   },
   {
     path: 'main',
-    loadChildren: 'src/app/main/main.module#MainModule'
+    loadChildren: 'src/app/main/main.module#MainModule',
+    canActivate: [AuthGuardIsLoggedInService],
   },
   {
     path: 'recipes',

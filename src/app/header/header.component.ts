@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { UserService } from '../user.service';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -9,10 +10,9 @@ import { ActivatedRoute } from '@angular/router';
 export class HeaderComponent implements OnInit {
   email;
   password;
-  islogin;
+  isLoggedIn: boolean =false;
 
-  constructor(private route: ActivatedRoute) {
-    /*this.islogin=false;*/
+  constructor(private userService: UserService, private router: Router) {
   }
 
   ngOnInit() {
@@ -99,5 +99,12 @@ export class HeaderComponent implements OnInit {
     searchButton.classList.remove('is-large');
     searchButton.classList.add('is-small');*/
 
+    //suscribe to isLoggedIn to see if the user is logged in or out
+    this.userService.isLoggedIn.subscribe(isLoggedIn => this.isLoggedIn = isLoggedIn);
+  }
+
+  logOut(){
+    this.userService.setLoggedIn(false);
+    this.router.navigate(['']);
   }
 }

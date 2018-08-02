@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../user.service';
-import { Router } from '../../../../node_modules/@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main-page',
@@ -13,11 +13,6 @@ export class MainPageComponent implements OnInit {
   constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {
-    //Allow access if user is loged in. If not go to home page
-    var userSession: string = localStorage.getItem('user-session');
-    if(userSession != 'is-logged-in') {
-      this.router.navigate(['']);
-    }
   }
 
   processSearchForm(){
