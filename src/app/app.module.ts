@@ -19,6 +19,7 @@ import { ChatComponent } from './chat/chat.component';
 import { SearchBarModule } from './search-bar/search-bar.module';
 import { AuthGuardIsLoggedInService } from './auth-guard-is-logged-in.service';
 import { AuthGuardIsLoggedOutService } from './auth-guard-is-logged-out.service';
+import { RecipeService } from './recipe.service';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { AuthGuardIsLoggedOutService } from './auth-guard-is-logged-out.service'
   ],
   providers: [
     UserService,
+    RecipeService,
     AuthGuardIsLoggedInService,
     AuthGuardIsLoggedOutService,
   ],

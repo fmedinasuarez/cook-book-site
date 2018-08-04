@@ -13,5 +13,14 @@ span {
 }
 
 #search-bar-container {
-    width: 50%;
+    width: 40%;
 }
+
+.button {
+    background: darkgoldenrod;
+    width: 100%;
+    border: none;
+}
+.input {
+    border-color: darkgoldenrod;
+  }

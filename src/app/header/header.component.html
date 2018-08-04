@@ -22,11 +22,25 @@
     </div>
     <!--menu-->
     <div class="navbar-menu has-text-centered" id="navbar-menu-id">
-        <!--<div class="navbar-item is-expanded" id="search-bar-item">
+        <!--Search bars-->
+        <div class="navbar-item is-expanded" id="search-bar-item" *ngIf="showSearchBar">
             <div class="container" id="search-bar-container">
-                <app-search-bar></app-search-bar>
+                <form id="findRecipeContainer" (ngSubmit)="processSearchForm()">
+                    <div class="field has-addons">
+                        <p class="control is-expanded">
+                            <input id="searchBarInput" class="input is-small" type="text" name="recipeName" placeholder="Find a recipe" [(ngModel)]="recipeName">
+                        </p>
+                        <p class="control has-icons">
+                            <button class="button is-small has-text-white" type="submit" id="searchButton">
+                                <span class="icon" id="searchIcon">
+                                    <i class="fa fa-search"></i>
+                                </span>
+                            </button>
+                        </p>
+                    </div>
+                </form>
             </div>
-        </div>-->
+        </div>
         <div class="navbar-end">
             <!--<a class="navbar-item has-text-dark has-text-weight-bold" routerLink='users'>Users</a>-->
             <!--sign up -->

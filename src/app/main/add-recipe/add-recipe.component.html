@@ -1,14 +1,15 @@
-<section class="hero is-info">
-    <div class="hero-body">  
-        <div class="container content has-text-centered">
-            <h1 class="title is-1 has-text-black">Add recipe</h1>
-        </div>
-    </div>
-</section>
 <section class="hero is-fullheight has-background-light">
     <div class="hero-body">
         <div class="container">
             <form id="signupForm" (ngSubmit)="processForm()">
+                <div class="field">
+                    <p class="subtitle is-2 has-text-black has-text-weight-semibold">Add a recipe</p>
+                    <div class="help is-error" *ngIf="showErrorMessage">
+                        <p class="has-text-weight-semibold has-text-black" style="background-color:red">
+                            {{ errorMessage }}
+                        </p>
+                    </div>
+                </div>
                 <!--title input-->
                 <div class="field">
                     <input type="text" name="title" class="input is-primary is-large" placeholder="Title" [(ngModel)]="title" required #titleInput="ngModel">
@@ -17,22 +18,21 @@
                 <div class="field" id="iLabel">
                     <label class="label has-text-dark has-text-weight-semibold">List of ingredients:</label>
                 </div>
-                
-                <div class="field has-addons" id="fIng" name="fIng">
+                <div class="field has-addons" *ngFor="let ing of ingredients; let i = index; trackBy:customTrackBy;" id="fIng-{{i}}">
                     <p class="control is-expanded">
-                        <input type="text" name="ingredient0" class="input is-primary" placeholder="Ingredient: 100gr. flour" [(ngModel)]="ingredients[0]" required #ingredient0Input="ngModel">
+                        <input type="text" name="ingredient{{i}}" class="input is-primary" placeholder="Ingredient: 100gr. flour" [(ngModel)]="ingredients[i]" required>
                     </p>
                     <p class="control has-icons">
-                        <button class="button has-text-white" id="b1-1">
+                        <button type="button" class="button has-text-white" (click)="removeIngredient(i)" id="b1-{{i}}">
                             <span class="icon">
-                                <i class="fa fa-times"></i>
+                                <i class="fa fa-times" id="i-{{i}}"></i>
                             </span>
                         </button>
                     </p>
                 </div>
                 <!--new ingredient button-->
                 <div class="field" id="fb-2">
-                    <button type="button" class="button has-text-white has-text-weight-semibold" id="b-2">New ingredient</button>
+                    <button type="button" class="button has-text-white has-text-weight-semibold" id="b-2"(click)="addIngredient()">New ingredient</button>
                 </div>
                 <!--steps-->
                 <div class="field" id="sLabel">

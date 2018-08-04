@@ -1,0 +1,35 @@
+.hero.has-background-light {
+    background-image: url('/assets/img/bg-image8.jpg') !important;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+}
+
+.column,.columns, .card, .card-content {
+    width: 100%;
+}
+
+.container {
+    background: rgb(235, 235, 235, 0.6);
+    padding-top: 5%;
+    padding-bottom: 5%;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.button {
+    background: darkgoldenrod;
+    width: 48%;
+    border: none;
+    margin-left: 1%;
+    margin-right: 1%;
+}
+
+@media only screen and (min-width: 768px) {
+    .container {
+        padding-left: 10%;
+        padding-right: 10%;
+        margin-left: 20%;
+        margin-right: 20%;
+    }
+}

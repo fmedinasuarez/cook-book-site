@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import { Route, Router } from '@angular/router';
+import { RecipeService } from '../recipe.service';
 
 @Component({
   selector: 'app-header',
@@ -10,9 +11,10 @@ import { Route, Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
   email;
   password;
-  isLoggedIn: boolean =false;
+  isLoggedIn: boolean= false;
+  showSearchBar: boolean= false;
 
-  constructor(private userService: UserService, private router: Router) {
+  constructor(private userService: UserService, private recipeService: RecipeService, private router: Router) {
   }
 
   ngOnInit() {
@@ -46,7 +48,7 @@ export class HeaderComponent implements OnInit {
       }
     });
 
-    /* header transition animation when user scroll 1/3 of height screen*/
+    /* header transition animation when user scroll 1/4 of height screen*/
     var y = screen.height;
     var yShow = y/4;
     var ok = false;
@@ -86,21 +88,11 @@ export class HeaderComponent implements OnInit {
       }
     })
 
-    /*var searchBarInput = document.querySelector('.input');
-    searchBarInput.classList.remove('is-large');
-    searchBarInput.classList.add('is-small');
-
-    var findForm = document.getElementById('findRecipeContainer');
-    findForm.style.marginTop = '0';
-    findForm.style.paddingLeft = '0';
-    findForm.style.paddingRight = '0';
-
-    var searchButton = document.getElementById("searchButton");
-    searchButton.classList.remove('is-large');
-    searchButton.classList.add('is-small');*/
-
     //suscribe to isLoggedIn to see if the user is logged in or out
     this.userService.isLoggedIn.subscribe(isLoggedIn => this.isLoggedIn = isLoggedIn);
+
+    this.recipeService.searchBarToHeader.subscribe(showSearchBar => this.showSearchBar = showSearchBar);
+    
   }
 
   logOut(){

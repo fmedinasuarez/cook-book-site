@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { debug } from 'util';
+import { MaxLengthValidator } from '@angular/forms';
+import { RecipeService } from '../../recipe.service';
+import { Router } from '../../../../node_modules/@angular/router';
 
 @Component({
   selector: 'app-add-recipe',
@@ -8,62 +11,70 @@ import { debug } from 'util';
 })
 export class AddRecipeComponent implements OnInit {
   title;
-  ingredients=[];
+  ingredients: any[] = [];
   steps;
-  ingredient;
+  email;
+
+  showErrorMessage = false;
+  errorMessage = "";
+
+  success;
+  status;
   
-  constructor() { }
+  constructor(private recipeService: RecipeService, private router: Router) { }
 
   ngOnInit() {
-    /*var addIngredient = document.getElementById('b-2');
-    addIngredient.addEventListener('click', () => {
-      var fIngs = document.getElementsByName("fIng");
-      var cantIng = fIngs.length;
-      console.log(cantIng);
+    this.recipeService.setSearchBarToHeader(true);
 
-      var newIngredientField = document.createElement('div');
-      newIngredientField.classList.add('field','has-addons');
-      newIngredientField.id = 'fIng';
-      newIngredientField.setAttribute('name','fIng');
+    this.ingredients.push("");
+    
+    document.addEventListener('click', (event) => {
+      var i = document.getElementById("i-0");
+      var target = event.target;
+      if(target === i){
+        return;
+      }
+      this.showErrorMessage = false;
+    });
+  }
 
-      var p = document.createElement('p');
-      p.classList.add('control', 'is-expanded');
-      newIngredientField.appendChild(p);
+  customTrackBy(i) {
+    return i;
+  }
 
-      var inputIngredient = document.createElement('input');
-      inputIngredient.classList.add('input','is-primary');
-      inputIngredient.type = 'text';
-      inputIngredient.placeholder = 'Ingredient: 100gr. flour';
-      inputIngredient.name = 'ingredient'+cantIng.toString();
-      inputIngredient.required = true;
-      inputIngredient.setAttribute('ngModel','ingredients['+cantIng.toString()+']');
-      /*inputIngredient.setAttribute('#ingredient'+cantIng.toString()+'Input','ngModel');
-      p.appendChild(inputIngredient);
+  addIngredient() {
+    this.ingredients.push("");
+  }
 
-      var pIcon = document.createElement('p');
-      pIcon.classList.add('control','has-icons');
-      newIngredientField.appendChild(pIcon);
-
-      var buttonIcon = document.createElement('button');
-      buttonIcon.classList.add('button', 'has-text-white');
-      buttonIcon.id = 'b1-1';
-      pIcon.appendChild(buttonIcon);
-
-      var spanIcon = document.createElement('span');
-      spanIcon.classList.add('icon');
-      buttonIcon.appendChild(spanIcon);
-
-      var iIcon = document.createElement('i');
-      iIcon.classList.add('fa','fa-times');
-      spanIcon.appendChild(iIcon);
-
-      var lastFIng = fIngs.item(cantIng-1);
-      lastFIng.parentNode.insertBefore(newIngredientField, lastFIng.nextSibling);
-    })*/
+  removeIngredient(i) {
+    var inputIngredient = document.querySelectorAll('.control');
+    if(inputIngredient.length == 2) {
+      this.showErrorMessage = true;
+      this.errorMessage = "At least one ingredient is required.";
+    }
+    else
+      this.ingredients.splice(i, 1);
   }
 
   processForm(){
-    console.log(this.title, this.ingredients, this.steps);
+    var recipe = {
+      "title": this.title,
+      "ingredients": this.ingredients,
+      "steps": this.steps,
+      "user" : this.recipeService.userData,
+    }
+    this.recipeService.addRecipe(recipe).subscribe(res => {
+      this.success = res['success'];
+      this.status = res['status'];
+        
+      if(this.status == 500) {
+        this.showErrorMessage = true;
+        this.errorMessage = this.success;
+      }
+      else {
+        alert(this.success);
+        this.router.navigate(['main']);
+      }
+    })
   }
-
 }

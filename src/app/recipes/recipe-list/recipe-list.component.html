@@ -1,0 +1,35 @@
+<section class="hero is-fullheight has-background-light">
+    <div class="hero-body">
+        <div class="container">
+            <p class="subtitle is-2 has-text-black has-text-weight-semibold">Your list of recipes:</p>
+            <div class="columns is-multiline">
+                <div class="column is-4" *ngFor="let r of recipes">
+                    <div class="card">
+                        <div class="card-content">
+                            <label class="label has-text-dark has-text-weight-semibold">
+                                <span class="icon is-small">
+                                    <i class="fa fa-user"></i>
+                                </span>
+                                <span>Publisher: You</span>
+                            </label>
+                            <label class="label has-text-dark has-text-weight-semibold">
+                                <span class="icon is-small">
+                                    <i class="fa fa-paperclip"></i>
+                                </span>
+                                <span>Title: {{r.title}}</span>
+                            </label>
+                            <p class="control">
+                                <button class="button is-medium has-text-white">
+                                    See more
+                                </button>
+                                <button class="button is-medium has-text-white">
+                                    Edit
+                                </button>
+                            </p>
+                        </div>      
+                    </div>      
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

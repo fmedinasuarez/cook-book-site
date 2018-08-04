@@ -5,9 +5,11 @@ import { BehaviorSubject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
+
 export class UserService {
 
-  apiUrl = 'https://api.github.com/users';
+  apiUrl2 = 'https://api.github.com/users';
+  apiUrl = 'http://localhost:3000/api/';
 
   private loggedInLocalStorage = JSON.parse(localStorage.getItem('loggedIn') || 'false');
   //loggedInStatus to manage hide/show header elements
@@ -25,25 +27,21 @@ export class UserService {
     this.loggedInStatus.next(value);
     localStorage.setItem('loggedIn',value.toString());
   }
-
+  //sacar
   getUsers() {
-    return this.http.get(`${this.apiUrl}`);
+    return this.http.get(`${this.apiUrl2}`);
   }
-
+  //sacar
   getUser(username:string) {
-    return this.http.get(`${this.apiUrl}/${username}`)
+    return this.http.get(`${this.apiUrl2}/${username}`)
   }
 
-  signUpUser(user){
-    return this.http.post('http://localhost:3000/signup', user);
+  signUpUser(user) {
+    return this.http.post(`${this.apiUrl}signup`, user);
   }
 
   loginUser(credentials) {
-    return this.http.post('http://localhost:3000/login', credentials);
-  }
-
-  addRecipe(recipe) {
-    return this.http.post('http://localhost:3000/addrecipe', recipe);
+    return this.http.post(`${this.apiUrl}login`, credentials);
   }
 
 }

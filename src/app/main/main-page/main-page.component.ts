@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../user.service';
 import { Router } from '@angular/router';
+import { RecipeService } from '../../recipe.service';
 
 @Component({
   selector: 'app-main-page',
@@ -10,9 +11,10 @@ import { Router } from '@angular/router';
 export class MainPageComponent implements OnInit {
   recipeName;
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService, private recipeService: RecipeService, private router: Router) { }
 
   ngOnInit() {
+    this.recipeService.setSearchBarToHeader(false);
   }
 
   processSearchForm(){
