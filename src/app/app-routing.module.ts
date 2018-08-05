@@ -38,7 +38,7 @@ const routes: Routes = [
     canActivate: [AuthGuardIsLoggedInService],
   },
   {
-    path: 'recipes',
+    path: ':list-recipes',
     loadChildren: 'src/app/recipes/recipes.module#RecipesModule'
   },
 ];

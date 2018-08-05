@@ -1,5 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import { UserService } from '../../user.service';
+import { RecipeService } from '../../recipe.service';
 
 @Component({
   selector: 'app-home',
@@ -9,10 +10,11 @@ import { UserService } from '../../user.service';
 export class HomeComponent implements OnInit {
   recipeName;
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private recipeService: RecipeService) {
   }
 
   ngOnInit() {
+    this.recipeService.setSearchBarToHeader(false);
     /*this.userService.setLoggedIn(false);*/
   }
   

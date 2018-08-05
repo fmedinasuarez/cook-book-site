@@ -48,7 +48,7 @@ export class AddRecipeComponent implements OnInit {
 
   removeIngredient(i) {
     var inputIngredient = document.querySelectorAll('.control');
-    if(inputIngredient.length == 2) {
+    if(inputIngredient.length == 4) {
       this.showErrorMessage = true;
       this.errorMessage = "At least one ingredient is required.";
     }

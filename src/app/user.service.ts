@@ -11,9 +11,8 @@ export class UserService {
   apiUrl2 = 'https://api.github.com/users';
   apiUrl = 'http://localhost:3000/api/';
 
-  private loggedInLocalStorage = JSON.parse(localStorage.getItem('loggedIn') || 'false');
   //loggedInStatus to manage hide/show header elements
-  private loggedInStatus = new BehaviorSubject<boolean>(this.loggedInLocalStorage);
+  private loggedInStatus = new BehaviorSubject<boolean>(JSON.parse(localStorage.getItem('loggedIn') || 'false'));
 
   constructor(private http: HttpClient) {
   }
@@ -23,7 +22,6 @@ export class UserService {
   }
   
   setLoggedIn(value: boolean) {
-    this.loggedInLocalStorage = value;
     this.loggedInStatus.next(value);
     localStorage.setItem('loggedIn',value.toString());
   }

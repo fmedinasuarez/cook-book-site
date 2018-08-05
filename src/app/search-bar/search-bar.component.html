@@ -1,7 +1,7 @@
-<form id="findRecipeContainer" (ngSubmit)="processSearchForm()">
+<form id="findRecipeContainer" (ngSubmit)="processSearchBarForm()">
     <div class="field has-addons">
         <p class="control is-expanded">
-            <input id="searchBarInput" class="input is-large" type="text" name="recipeName" placeholder="Find a recipe" [(ngModel)]="recipeName">
+            <input (keyup)="onKey($event)" id="searchBarInput" class="input is-large" type="text" name="recipeName" placeholder="Find a recipe" [(ngModel)]="recipeName">
         </p>
         <p class="control has-icons">
             <button class="button is-large has-text-white" type="submit" id="searchButton">
@@ -11,4 +11,13 @@
             </button>
         </p>
     </div>
+    <table class="table" id="tableResults" style="display: none;">
+        <tbody>
+            <tr *ngFor="let r of results">
+                <td>
+                    <a class="has-text-weight-semibold">{{r.title}}</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </form>

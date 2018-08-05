@@ -38,7 +38,7 @@ import { RecipeService } from './recipe.service';
     FormsModule,
     HttpClientModule,
     Ng2PageScrollModule,
-    SearchBarModule
+    SearchBarModule,
   ],
   providers: [
     UserService,

@@ -1,10 +1,16 @@
 .input {
     border-color: darkgoldenrod;
   }
+
+/*mobile*/
+#tableResults {
+    width: 80%;
+    position: absolute;
+}
   
 /*mobile*/
 #findRecipeContainer{
-    margin-top: 10%;
+    margin-top: 5%;
     width: 100%;
 }
 
@@ -13,7 +19,10 @@
     #findRecipeContainer {
         padding-left: 20%;
         padding-right: 20%;
-    }   
+    }  
+    #tableResults {
+        width: 55%;
+    } 
 }
   
 /*ipad*/
@@ -28,4 +37,12 @@
     background: darkgoldenrod;
     width: 100%;
     border: none;
+}
+
+.field {
+    margin-bottom: 0;
+}
+
+tr, td, tbody {
+    width: 100%;
 }

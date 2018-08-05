@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
-import { Route, Router } from '@angular/router';
+import { Route, Router, ActivatedRoute } from '@angular/router';
 import { RecipeService } from '../recipe.service';
 
 @Component({
@@ -48,7 +48,7 @@ export class HeaderComponent implements OnInit {
       }
     });
 
-    /* header transition animation when user scroll 1/4 of height screen*/
+    /* header transition animation when user scroll 1/4 of height of the screen*/
     var y = screen.height;
     var yShow = y/4;
     var ok = false;
@@ -92,11 +92,11 @@ export class HeaderComponent implements OnInit {
     this.userService.isLoggedIn.subscribe(isLoggedIn => this.isLoggedIn = isLoggedIn);
 
     this.recipeService.searchBarToHeader.subscribe(showSearchBar => this.showSearchBar = showSearchBar);
-    
   }
 
   logOut(){
     this.userService.setLoggedIn(false);
+    this.recipeService.setUserData('');
     this.router.navigate(['']);
   }
 }

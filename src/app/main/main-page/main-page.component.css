@@ -29,7 +29,7 @@
     border-color: darkgoldenrod;
   }
 
-  .table {
+  #mainTable {
       width: 100%;
       background: none;
       margin-top: -10%;

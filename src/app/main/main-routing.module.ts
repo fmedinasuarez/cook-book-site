@@ -15,16 +15,10 @@ const routes: Routes = [
     canActivate: [AuthGuardIsLoggedInService]
   },
   {
-    path: 'my-recipes',
-    loadChildren: 'src/app/recipes/recipes.module#RecipesModule',
-    canActivate: [AuthGuardIsLoggedInService]
-  },
-  {
-    path: 'saved-recipes',
+    path: ':list-recipes',
     loadChildren: 'src/app/recipes/recipes.module#RecipesModule',
     canActivate: [AuthGuardIsLoggedInService]
   }
-
 ];
 
 @NgModule({

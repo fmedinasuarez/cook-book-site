@@ -10,27 +10,22 @@ export class RecipeService {
   apiUrl = 'http://localhost:3000/api/';
 
   private userDataStatus = localStorage.getItem('userData') || "";
-
-  private searchBarToHeaderLocalStorage: boolean = JSON.parse(localStorage.getItem('searchBarToHeader') || 'false');
-  private searchBarToHeaderStatus = new BehaviorSubject<boolean>(this.searchBarToHeaderLocalStorage);
+  private searchBarToHeaderStatus = new BehaviorSubject<boolean>(JSON.parse(localStorage.getItem('searchBarToHeader') || 'false'));
 
   constructor(private http: HttpClient) {}
 
-  setUserData(email:string) {
-    this.userDataStatus = email;
-    localStorage.setItem('userData',email);
+  setUserData(value:string) {
+    this.userDataStatus = value;
+    localStorage.setItem('userData', value);
   }
-
   get userData(){
     return this.userDataStatus;
   }
 
   setSearchBarToHeader(value:boolean) {
-    this.searchBarToHeaderLocalStorage = value;
     this.searchBarToHeaderStatus.next(value);
     localStorage.setItem('searchBarToHeader',value.toString());
   }
-
   get searchBarToHeader() {
     return this.searchBarToHeaderStatus.asObservable();
   }
@@ -41,6 +36,10 @@ export class RecipeService {
 
   getMyRecipes() {
     return this.http.get(`${this.apiUrl}myrecipes/${this.userDataStatus}`);
+  }
+
+  getRecipesByTitle(title) {
+    return this.http.get(`${this.apiUrl}recipesByTitle/${title}`);
   }
 
 }
