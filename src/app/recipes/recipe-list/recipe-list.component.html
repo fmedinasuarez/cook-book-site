@@ -2,7 +2,7 @@
     <div class="hero-body">
         <div class="container">
             <p *ngIf="listRecipeContext=='my-recipes'" class="subtitle is-2 has-text-black has-text-weight-semibold">Your list of recipes:</p>
-            <p *ngIf="listRecipeContext=='search'" class="subtitle is-2 has-text-black has-text-weight-semibold">Results:</p>
+            <p *ngIf="listRecipeContext=='search'" class="subtitle is-2 has-text-black has-text-weight-semibold">Results for {{recipeTitle}}:</p>
             <div class="columns is-multiline">
                 <div class="column is-4" *ngFor="let r of recipes">
                     <div class="card">

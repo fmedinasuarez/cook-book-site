@@ -23,9 +23,9 @@
     <!--menu-->
     <div class="navbar-menu has-text-centered" id="navbar-menu-id">
         <!--Search bar-->
-        <div class="navbar-item is-expanded" id="search-bar-item" *ngIf="showSearchBar">
+        <div class="navbar-item is-expanded" id="search-bar-item">
             <div class="container" id="search-bar-container">
-                <!--<app-search-bar></app-search-bar>-->
+                <template #searchbarcontainer></template>
             </div>
         </div>
         <div class="navbar-end">

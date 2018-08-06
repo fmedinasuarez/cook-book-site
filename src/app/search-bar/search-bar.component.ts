@@ -8,7 +8,6 @@ import { RecipeService } from '../recipe.service';
   styleUrls: ['search-bar.component.css']
 })
 export class SearchBarComponent implements OnInit {
-
   recipeName;
 
   results;
@@ -16,6 +15,8 @@ export class SearchBarComponent implements OnInit {
 
   success;
   status;
+
+  searchBarToHeader = false;
 
   constructor(private router : Router, private recipeService: RecipeService) { }
 
@@ -29,7 +30,7 @@ export class SearchBarComponent implements OnInit {
       }
     })
 
-    document.addEventListener('click',(e) => {
+    document.addEventListener('click',(event) => {
       var target = event.target;
       if(target != input){
         if((table as HTMLElement).style.display == "block") {
@@ -37,6 +38,27 @@ export class SearchBarComponent implements OnInit {
         }
       }
     })
+
+    this.recipeService.searchBarToHeader.subscribe(searchBarToHeader => {
+      this.searchBarToHeader = searchBarToHeader;
+      var input = document.getElementById('searchBarInput');
+      var button = document.getElementById('searchButton');
+      var formContainer = document.getElementById('findRecipeContainer');
+      if(this.searchBarToHeader) {
+        input.classList.remove('is-large');
+        button.classList.remove('is-large');
+        input.classList.add('is-small');
+        button.classList.add('is-small');
+        /*(formContainer as HTMLElement).style.marginTop = '0';*/
+      }
+      else {
+        input.classList.remove('is-small');
+        button.classList.remove('is-small');
+        input.classList.add('is-large');
+        button.classList.add('is-large');
+        /*(formContainer as HTMLElement).style.marginTop = '5px';*/
+      }
+    });
   }
 
   processSearchBarForm(){

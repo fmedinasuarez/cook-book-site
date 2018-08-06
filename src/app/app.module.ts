@@ -20,6 +20,7 @@ import { SearchBarModule } from './search-bar/search-bar.module';
 import { AuthGuardIsLoggedInService } from './auth-guard-is-logged-in.service';
 import { AuthGuardIsLoggedOutService } from './auth-guard-is-logged-out.service';
 import { RecipeService } from './recipe.service';
+import { SearchBarComponent } from './search-bar/search-bar.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { RecipeService } from './recipe.service';
     AuthGuardIsLoggedInService,
     AuthGuardIsLoggedOutService,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [SearchBarComponent]
 })
 export class AppModule { }

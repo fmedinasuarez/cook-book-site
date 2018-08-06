@@ -15,6 +15,7 @@ export class RecipeListComponent implements OnInit {
   success;
 
   listRecipeContext;
+  recipeTitle;
 
   constructor(private recipeService: RecipeService, private route: ActivatedRoute) { }
 
@@ -25,9 +26,9 @@ export class RecipeListComponent implements OnInit {
       this.listRecipeContext = params['list-recipes'];
 
       if( this.listRecipeContext.includes("search")) {
-        const recipeTitle =  this.listRecipeContext.slice(7,this.listRecipeContext.length);
+        this.recipeTitle =  this.listRecipeContext.slice(7,this.listRecipeContext.length);
         this.listRecipeContext = "search";
-        this.recipeService.getRecipesByTitle(recipeTitle).subscribe(res => {
+        this.recipeService.getRecipesByTitle(this.recipeTitle).subscribe(res => {
           this.status = res['status'];
           if(this.status == 200){
             this.recipes = res['recipes'];

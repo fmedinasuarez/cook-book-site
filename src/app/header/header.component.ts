@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewContainerRef, ComponentFactoryResolver, ComponentRef, ComponentFactory } from '@angular/core';
 import { UserService } from '../user.service';
 import { Route, Router, ActivatedRoute } from '@angular/router';
 import { RecipeService } from '../recipe.service';
+import { SearchBarComponent} from '../search-bar/search-bar.component';
 
 @Component({
   selector: 'app-header',
@@ -9,43 +10,56 @@ import { RecipeService } from '../recipe.service';
   styleUrls: ['header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  //To reuse searchBarComponent
+  componentRef: any;
+  @ViewChild('searchbarcontainer', { read: ViewContainerRef }) entry: ViewContainerRef;
+
   email;
   password;
   isLoggedIn: boolean= false;
   showSearchBar: boolean= false;
 
-  constructor(private userService: UserService, private recipeService: RecipeService, private router: Router) {
+  constructor(private resolver: ComponentFactoryResolver, private userService: UserService, private recipeService: RecipeService, private router: Router) {
   }
 
   ngOnInit() {
+    this.recipeService.searchBarToHeader.subscribe(showSearchBar => {
+      this.showSearchBar = showSearchBar;
+      if(this.showSearchBar)
+        this.createSearchBarComponent();
+      else {
+        if (this.componentRef != undefined)
+          this.destroySearchBarComponent();
+      }
+    });
+
+    //suscribe to isLoggedIn to see if the user is logged in or out
+    this.userService.isLoggedIn.subscribe(isLoggedIn => this.isLoggedIn = isLoggedIn);
+
     var navbarBurgerId = document.querySelector(".navbar-burger");
     var navbarMenuId = document.getElementById("navbar-menu-id");
     var navbarItems = document.getElementsByClassName("navbar-item");
     var navbar = document.querySelector('.navbar');
     var html = document.querySelector('html');
 
-    /*close navbar burger menu when click on items*/
-    for(var i=0; i<navbarItems.length; i++) {
-      navbarItems[i].addEventListener('click',function(){
-        if(navbarMenuId.classList.contains('is-active')) {
-          navbarMenuId.classList.remove('is-active');
-        }
-      })
-    }
-
     /*toggle is-active navbar burger menu when click it*/
-    navbarBurgerId.addEventListener('click',function(e) {
+    navbarBurgerId.addEventListener('click', (e) => {
       html.classList.add('has-navbar-fixed-top');
       navbar.classList.add('is-fixed-top');
       e.stopPropagation();
       navbarMenuId.classList.toggle('is-active');
     })
-    
-    document.addEventListener('click', function() {
-      /*when click on the document close the navbar burger menu*/
-      if(navbarMenuId.classList.contains('is-active')) {
-        navbarMenuId.classList.remove('is-active');
+
+    /*when click on the document close the navbar burger menu*/
+    document.addEventListener('click', (e) => {
+      var target = e.target;
+      if(this.showSearchBar) {
+        var searchBarInput = document.getElementById('searchBarInput');
+        if(target === searchBarInput) 
+          return;
       }
+      if(navbarMenuId.classList.contains('is-active')) 
+        navbarMenuId.classList.remove('is-active');
     });
 
     /* header transition animation when user scroll 1/4 of height of the screen*/
@@ -87,11 +101,16 @@ export class HeaderComponent implements OnInit {
         }
       }
     })
-
-    //suscribe to isLoggedIn to see if the user is logged in or out
-    this.userService.isLoggedIn.subscribe(isLoggedIn => this.isLoggedIn = isLoggedIn);
-
-    this.recipeService.searchBarToHeader.subscribe(showSearchBar => this.showSearchBar = showSearchBar);
+  }
+  //To create searchaBarComponent on header
+  createSearchBarComponent() {
+    this.entry.clear();
+    const factory = this.resolver.resolveComponentFactory(SearchBarComponent);
+    this.componentRef = this.entry.createComponent(factory);
+  }
+  //To destroy searchaBarComponent on header
+  destroySearchBarComponent() {
+    this.componentRef.destroy();
   }
 
   logOut(){

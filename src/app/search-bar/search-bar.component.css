@@ -6,11 +6,13 @@
 #tableResults {
     width: 80%;
     position: absolute;
+    border-collapse: collapse;
+    background: white;
 }
   
 /*mobile*/
 #findRecipeContainer{
-    margin-top: 5%;
+    /*margin-top: 5%;*/
     width: 100%;
 }
 
@@ -21,7 +23,7 @@
         padding-right: 20%;
     }  
     #tableResults {
-        width: 55%;
+        width: 56.5%;
     } 
 }
   
@@ -45,4 +47,6 @@
 
 tr, td, tbody {
     width: 100%;
+    right: 0;
+    border: none;
 }

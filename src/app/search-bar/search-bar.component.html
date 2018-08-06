@@ -1,4 +1,4 @@
-<form id="findRecipeContainer" (ngSubmit)="processSearchBarForm()">
+<form id="findRecipeContainer" (ngSubmit)="processSearchBarForm()" autocomplete=off>
     <div class="field has-addons">
         <p class="control is-expanded">
             <input (keyup)="onKey($event)" id="searchBarInput" class="input is-large" type="text" name="recipeName" placeholder="Find a recipe" [(ngModel)]="recipeName">
