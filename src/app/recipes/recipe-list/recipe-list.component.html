@@ -3,8 +3,9 @@
         <div class="container">
             <p *ngIf="listRecipeContext=='my-recipes'" class="subtitle is-2 has-text-black has-text-weight-semibold">Your list of recipes:</p>
             <p *ngIf="listRecipeContext=='search'" class="subtitle is-2 has-text-black has-text-weight-semibold">Results for {{recipeTitle}}:</p>
+            <p *ngIf="listRecipeContext=='saved-recipes'" class="subtitle is-2 has-text-black has-text-weight-semibold">Your saved recipes:</p>
             <div class="columns is-multiline">
-                <div class="column is-4" *ngFor="let r of recipes">
+                <div class="column is-4" *ngFor="let r of recipes; let i = index;">
                     <div class="card">
                         <div class="card-content">
                             <label class="label has-text-dark has-text-weight-semibold">
@@ -20,15 +21,11 @@
                                 <span>Title: {{r.title}}</span>
                             </label>
                             <p class="control">
-                                <button class="button is-medium has-text-white">
-                                    See more
-                                </button>
-                                <button *ngIf="listRecipeContext=='my-recipes'" class="button is-medium has-text-white">
-                                    Edit
-                                </button>
-                                <button *ngIf="listRecipeContext=='search'" class="button is-medium has-text-white">
-                                    Save
-                                </button>
+                                <button class="button is-medium has-text-white">See more</button>
+                                <button *ngIf="listRecipeContext=='my-recipes'" class="button is-medium has-text-white">Edit</button>
+                                <button *ngIf="listRecipeContext=='search' && inSavedRecipes(r)" class="button is-medium has-text-white" type="button" id="saveButton-{{i}}" (click)="saveUnsaveRecipe(i)">Saved</button>
+                                <button *ngIf="listRecipeContext=='search' && !inSavedRecipes(r)" class="button is-medium has-text-white" type="button" id="saveButton-{{i}}" (click)="saveUnsaveRecipe(i)">Save</button>
+                                <button *ngIf="listRecipeContext=='saved-recipes'" class="button is-medium has-text-white">Delete</button>
                             </p>
                         </div>      
                     </div>      

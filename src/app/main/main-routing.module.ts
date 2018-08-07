@@ -15,7 +15,7 @@ const routes: Routes = [
     canActivate: [AuthGuardIsLoggedInService]
   },
   {
-    path: ':list-recipes',
+    path: ':search-or-list',
     loadChildren: 'src/app/recipes/recipes.module#RecipesModule',
     canActivate: [AuthGuardIsLoggedInService]
   }

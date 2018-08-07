@@ -50,7 +50,7 @@ export class LogInComponent implements OnInit {
       if(this.status == 200) {
         this.userService.setLoggedIn(true);
         this.recipeService.setUserData(this.email);
-        this.router.navigate(['/main']);
+        this.router.navigate(['main']);
       }
     })    
   }

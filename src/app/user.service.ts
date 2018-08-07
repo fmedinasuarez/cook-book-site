@@ -9,7 +9,7 @@ import { BehaviorSubject } from 'rxjs';
 export class UserService {
 
   apiUrl2 = 'https://api.github.com/users';
-  apiUrl = 'http://localhost:3000/api/';
+  apiUrl = 'http://192.168.0.117:3000/api/';
 
   //loggedInStatus to manage hide/show header elements
   private loggedInStatus = new BehaviorSubject<boolean>(JSON.parse(localStorage.getItem('loggedIn') || 'false'));
@@ -35,7 +35,7 @@ export class UserService {
   }
 
   signUpUser(user) {
-    return this.http.post(`${this.apiUrl}signup`, user);
+    return this.http.post(`${this.apiUrl}signUp`, user);
   }
 
   loginUser(credentials) {

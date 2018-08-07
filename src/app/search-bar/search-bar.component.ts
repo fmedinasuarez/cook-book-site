@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { RecipeService } from '../recipe.service';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-search-bar',
@@ -8,19 +9,22 @@ import { RecipeService } from '../recipe.service';
   styleUrls: ['search-bar.component.css']
 })
 export class SearchBarComponent implements OnInit {
-  recipeName;
+  recipeName = '';
 
-  results;
-  values= '';
+  results = [];
+  values = '';
 
   success;
   status;
 
   searchBarToHeader = false;
+  isLoggedIn;
 
-  constructor(private router : Router, private recipeService: RecipeService) { }
+  constructor(private router : Router, private recipeService: RecipeService, private userService: UserService) { }
 
   ngOnInit() {
+    this.userService.isLoggedIn.subscribe(isLoggedIn => this.isLoggedIn = isLoggedIn);
+
     var input = document.getElementById('searchBarInput');
     var table = document.getElementById('tableResults');
 
@@ -32,7 +36,7 @@ export class SearchBarComponent implements OnInit {
 
     document.addEventListener('click',(event) => {
       var target = event.target;
-      if(target != input){
+      if(target != input && target!= table){
         if((table as HTMLElement).style.display == "block") {
           (table as HTMLElement).style.display = "none";
         }
@@ -49,28 +53,26 @@ export class SearchBarComponent implements OnInit {
         button.classList.remove('is-large');
         input.classList.add('is-small');
         button.classList.add('is-small');
-        /*(formContainer as HTMLElement).style.marginTop = '0';*/
       }
       else {
         input.classList.remove('is-small');
         button.classList.remove('is-small');
         input.classList.add('is-large');
         button.classList.add('is-large');
-        /*(formContainer as HTMLElement).style.marginTop = '5px';*/
       }
     });
   }
 
   processSearchBarForm(){
-    this.router.navigate(['search:'+this.recipeName]);
+    if(this.isLoggedIn)
+      this.router.navigate(['main/search:'+this.recipeName]);
+    else
+      this.router.navigate(['search:'+this.recipeName]);
   }
 
   onKey(event: any) {
     this.values = event.target.value;
-    if(this.values == '') {
-      this.results = [];
-    }
-    else {
+    if(this.values != '') {
       this.recipeService.getRecipesByTitle(this.values).subscribe(res => {
         this.status = res['status'];
         if(this.status == 200){
@@ -81,6 +83,17 @@ export class SearchBarComponent implements OnInit {
         }
       })
     }
+    else
+      this.results = [];
+  }
+
+  searchClicked(i) {
+    this.recipeName = this.results[i].title;
+    if(this.isLoggedIn)
+      this.router.navigate(['main/search:'+this.recipeName]);
+    else
+      this.router.navigate(['search:'+this.recipeName]);
+
   }
 
 }

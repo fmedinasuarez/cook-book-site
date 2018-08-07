@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { RequestOptions } from '@angular/http';
 import { BehaviorSubject } from '../../node_modules/rxjs';
 
 @Injectable({
@@ -7,7 +8,7 @@ import { BehaviorSubject } from '../../node_modules/rxjs';
 })
 export class RecipeService {
 
-  apiUrl = 'http://localhost:3000/api/';
+  apiUrl = 'http://192.168.0.117:3000/api/';
 
   private userDataStatus = localStorage.getItem('userData') || "";
   private searchBarToHeaderStatus = new BehaviorSubject<boolean>(JSON.parse(localStorage.getItem('searchBarToHeader') || 'false'));
@@ -31,15 +32,27 @@ export class RecipeService {
   }
 
   addRecipe(recipe) {
-    return this.http.post(`${this.apiUrl}addrecipe`, recipe);
+    return this.http.post(`${this.apiUrl}addRecipe`, recipe);
   }
 
   getMyRecipes() {
-    return this.http.get(`${this.apiUrl}myrecipes/${this.userDataStatus}`);
+    return this.http.get(`${this.apiUrl}myRecipes/${this.userDataStatus}`);
   }
 
   getRecipesByTitle(title) {
     return this.http.get(`${this.apiUrl}recipesByTitle/${title}`);
+  }
+
+  saveRecipe(data) {
+    return this.http.put(`${this.apiUrl}saveRecipe`, data);
+  }
+
+  getSavedRecipes() {
+    return this.http.get(`${this.apiUrl}savedRecipes/${this.userDataStatus}`);
+  }
+
+  deleteSavedRecipe(data) {
+    return this.http.post(`${this.apiUrl}deleteSavedRecipe`,data);
   }
 
 }
