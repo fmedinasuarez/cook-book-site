@@ -101,12 +101,12 @@ export class RecipeListComponent implements OnInit {
 
   saveUnsaveRecipe(i) {
     var saveButton = document.getElementById("saveButton-"+i);
+    var data = {
+      "recipe" : this.recipes[i], 
+      "user": this.recipeService.userData
+    };
     if(saveButton.innerHTML === "Save") {
       saveButton.innerHTML = "Saved";
-      var data = {
-        "recipe" : this.recipes[i], 
-        "user": this.recipeService.userData
-      };
       //Save recipe i in user savedRecipe's collection docs
       this.recipeService.saveRecipe(data).subscribe(res => {
         this.success = res['success'];
@@ -114,11 +114,7 @@ export class RecipeListComponent implements OnInit {
     }
     else {
       saveButton.innerHTML = "Save";
-      var data1 = {
-        "recipe" : this.recipes[i],
-        "user" : this.recipeService.userData,
-      }
-      this.recipeService.deleteSavedRecipe(data1).subscribe(res => {
+      this.recipeService.deleteSavedRecipe(data).subscribe(res => {
         this.success = res['success'];
       });
     }
@@ -130,6 +126,20 @@ export class RecipeListComponent implements OnInit {
         return true;
     }
     return false;
+  }
+
+  deleteSavedRecipe(i) {
+    var selection = confirm("You are removing "+this.recipes[i].title+" from your saved recipes. Are you sure?");
+    if(selection) {
+      var data = {
+        "recipe" : this.recipes[i], 
+        "user": this.recipeService.userData
+      };
+      this.recipeService.deleteSavedRecipe(data).subscribe(res => {
+        this.success = res['success'];
+        this.recipes.splice(i, 1);
+      })
+    }
   }
 
 }
