@@ -76,7 +76,8 @@ export class SearchBarComponent implements OnInit {
       this.recipeService.getRecipesByTitle(this.values).subscribe(res => {
         this.status = res['status'];
         if(this.status == 200){
-          this.results = res['recipes'];
+          let set = {}, recipes = res['recipes'];
+          this.results = recipes.filter(obj => !set[obj.title] && (set[obj.title] = true));
         }
         else {
           this.success = res['success'];

@@ -1,0 +1,41 @@
+<section class="hero is-fullheight has-background-light">
+    <div class="hero-body">
+        <div class="container">
+            <div class="card" *ngIf="recipe">
+                <div class="card-content">
+                    <label class="label has-text-dark has-text-weight-semibold">
+                        <span class="icon is-small">
+                            <i class="fa fa-user"></i>
+                        </span>
+                        <span> Publisher: {{recipe.user}}</span><br>
+                    </label><hr>
+                    <label class="label has-text-dark has-text-weight-semibold">
+                        <span class="icon is-small">
+                            <i class="fa fa-paperclip"></i>
+                        </span>
+                        <span> Title: {{recipe.title}}</span><br>
+                    </label><hr>
+                    <label class="label has-text-dark has-text-weight-semibold">
+                        <span class="icon is-small">
+                            <i class="fa fa-list-ul"></i>
+                        </span>
+                        <span> Ingredients:</span><br>
+
+                        <span *ngFor="let i of recipe.ingredients" style="margin-left:10%">
+                            <span class="icon is-small">
+                                <i class="fa fa-slack"></i>
+                            </span>
+                            <span> {{i}}<br></span>
+                        </span>
+                    </label><hr>
+                    <label class="label has-text-dark has-text-weight-semibold">
+                        <span class="icon is-small">
+                            <i class="fa fa-pencil"></i>
+                        </span>
+                        <span> Steps: {{recipe.steps}}</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

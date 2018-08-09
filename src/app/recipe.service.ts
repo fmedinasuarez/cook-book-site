@@ -55,4 +55,8 @@ export class RecipeService {
     return this.http.post(`${this.apiUrl}deleteSavedRecipe`,data);
   }
 
+  getRecipeById(id) {
+    return this.http.get(`${this.apiUrl}recipeById/${id}`);
+  }
+
 }

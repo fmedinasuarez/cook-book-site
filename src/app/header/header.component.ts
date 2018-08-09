@@ -40,14 +40,31 @@ export class HeaderComponent implements OnInit {
     var navbarMenuId = document.getElementById("navbar-menu-id");
     var navbarItems = document.getElementsByClassName("navbar-item");
     var navbar = document.querySelector('.navbar');
-    var html = document.querySelector('html');
 
     /*toggle is-active navbar burger menu when click it*/
     navbarBurgerId.addEventListener('click', (e) => {
-      html.classList.add('has-navbar-fixed-top');
-      navbar.classList.add('is-fixed-top');
       e.stopPropagation();
       navbarMenuId.classList.toggle('is-active');
+      navbarBurgerId.classList.toggle('is-active');
+      if(navbarBurgerId.classList.contains('is-active')) {
+        (navbar as HTMLElement).style.height = '100%';
+        navbarMenuId.style.height = '100%';
+        (navbar as HTMLElement).style.background = 'rgba(255, 255, 255, 0.4)';
+        navbarMenuId.style.background = 'rgba(255, 255, 255, 0.4)';
+        for(var i=1; i<navbarItems.length; i++){
+          (navbarItems[i] as HTMLElement).style.fontSize = 'xx-large';
+          (navbarItems[i].firstElementChild as HTMLElement).style.marginRight = '15px';
+        }
+      }
+      else {
+        (navbar as HTMLElement).style.height = '0';
+        navbarMenuId.style.background = 'rgba(255, 255, 255, 0.4)';
+        (navbar as HTMLElement).style.background = 'white';
+        for(var i=1; i<navbarItems.length; i++){
+          (navbarItems[i] as HTMLElement).style.fontSize = 'medium';
+          (navbarItems[i].firstElementChild as HTMLElement).style.marginRight = '5px';
+        }
+      }
     })
 
     /*when click on the document close the navbar burger menu*/
@@ -58,50 +75,20 @@ export class HeaderComponent implements OnInit {
         if(target === searchBarInput) 
           return;
       }
-      if(navbarMenuId.classList.contains('is-active')) 
+      if(navbarBurgerId.classList.contains('is-active'))  {
         navbarMenuId.classList.remove('is-active');
+        navbarBurgerId.classList.remove('is-active');
+        (navbar as HTMLElement).style.height = '0';
+        (navbar as HTMLElement).style.background = 'white';
+        for(var i=1; i<navbarItems.length; i++){
+          (navbarItems[i] as HTMLElement).style.fontSize = 'medium';
+          (navbarItems[i].firstElementChild as HTMLElement).style.marginRight = '5px';
+        }
+      }
     });
 
-    /* header transition animation when user scroll 1/4 of height of the screen*/
-    var y = screen.height;
-    var yShow = y/4;
-    var ok = false;
-
-    window.addEventListener('scroll',function(){
-      if(window.pageYOffset >= yShow){
-        ok = true;
-        /*navbar burger case*/
-        if(!navbarMenuId.classList.contains('is-active')) {
-          html.classList.add('has-navbar-fixed-top');
-          navbar.classList.add('is-fixed-top');
-        }
-        (navbar as HTMLElement).style.background = 'black';
-        /*navbar burger*/
-        navbarMenuId.style.background = 'black';
-        for(var i=0; i<navbarItems.length; i++) {
-          navbarItems[i].classList.remove('has-text-dark');
-          navbarItems[i].classList.add('has-text-white');
-        }
-      }
-      else {
-        if(ok){
-          /*navbar burger case*/
-          if(!navbarMenuId.classList.contains('is-active')) {
-            html.classList.remove('has-navbar-fixed-top');
-            navbar.classList.remove('is-fixed-top');
-          }
-          (navbar as HTMLElement).style.background = 'white';
-          /*navbar burger*/
-          navbarMenuId.style.background = 'white';
-          for(var i=0; i<navbarItems.length; i++) {
-            navbarItems[i].classList.remove('has-text-white');
-            navbarItems[i].classList.add('has-text-dark');
-          }
-          ok= false;
-        }
-      }
-    })
   }
+
   //To create searchaBarComponent on header
   createSearchBarComponent() {
     this.entry.clear();

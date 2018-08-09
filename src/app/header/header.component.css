@@ -1,19 +1,9 @@
-.navbar {
-    background: white;
-    padding-right: 10px;
-    padding-left: 10px;
-}
-
-.navbar-menu{
-    background:white;
-}
-
 span {
     margin-right: 5px;
 }
 
 #search-bar-container {
-    width: 70%;
+    width: 100%;
 }
 
 
@@ -25,3 +15,13 @@ span {
 .input {
     border-color: darkgoldenrod;
   }
+
+  a.navbar-item {
+    text-decoration: none;
+}
+
+a.navbar-item:hover {
+    text-decoration: underline;
+    text-decoration-color: darkgoldenrod;
+    text-decoration-style: solid;
+}

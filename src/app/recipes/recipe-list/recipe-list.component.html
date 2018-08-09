@@ -21,11 +21,11 @@
                                 <span>Title: {{r.title}}</span>
                             </label>
                             <p class="control">
-                                <button class="button is-medium has-text-white">See more</button>
+                                <button class="button is-medium has-text-white" routerLink="{{r.title}}_{{r._id}}">See more</button>
 
                                 <button *ngIf="listRecipeContext=='my-recipes'" class="button is-medium has-text-white">Edit</button>
 
-                                <ng-container *ngIf="listRecipeContext=='search'; then search"></ng-container>
+                                <ng-container *ngIf="listRecipeContext=='search' && isLoggedIn; then search"></ng-container>
                                 <ng-template #search>
                                     <button *ngIf="inSavedRecipes(r); else notInSavedRecipes" class="button is-medium has-text-white" type="button" id="saveButton-{{i}}" (click)="saveUnsaveRecipe(i)">Saved</button>    
                                     <ng-template #notInSavedRecipes>

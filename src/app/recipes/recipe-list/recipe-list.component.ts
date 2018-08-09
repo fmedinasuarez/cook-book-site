@@ -71,10 +71,11 @@ export class RecipeListComponent implements OnInit {
           this.recipeTitle =  this.listRecipeContext.slice(7,this.listRecipeContext.length);
           this.listRecipeContext = "search";
           if(this.recipeTitle != '') {
-            
-            this.recipeService.getSavedRecipes().subscribe(res => {
-              this.savedRecipes = res['savedRecipes']
-            });
+            if(this.isLoggedIn) {
+              this.recipeService.getSavedRecipes().subscribe(res => {
+                this.savedRecipes = res['savedRecipes']
+              });
+            }
             this.recipeService.getRecipesByTitle(this.recipeTitle).subscribe(res => {
               this.status = res['status'];
               if(this.status == 200){

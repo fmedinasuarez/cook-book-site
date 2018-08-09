@@ -5,10 +5,6 @@
     background-attachment: fixed;
 }
 
-.column,.columns, .card, .card-content {
-    width: 100%;
-}
-
 .card {
     border: 2px solid darkgoldenrod;
 }
@@ -21,14 +17,6 @@
     padding-right: 5%;
 }
 
-.button {
-    background: darkgoldenrod;
-    width: 48%;
-    border: none;
-    margin-left: 1%;
-    margin-right: 1%;
-}
-
 @media only screen and (min-width: 768px) {
     .container {
         padding-left: 10%;
@@ -36,4 +24,9 @@
         margin-left: 20%;
         margin-right: 20%;
     }
+}
+
+hr {
+    border-color: darkgoldenrod;
+    border-style: solid;
 }
