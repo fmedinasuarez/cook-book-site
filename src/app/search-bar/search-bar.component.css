@@ -1,11 +1,14 @@
 .input {
     border-color: darkgoldenrod;
+    border-radius: 30px;
   }
 
 /*mobile*/
 #tableResults {
-    width: 80%;
+    left: 12%;
+    width: 75%;
     position: absolute;
+    z-index:1;/*come in front*/
     border-collapse: collapse;
     background: white;
 }
@@ -21,17 +24,22 @@
     #findRecipeContainer {
         padding-left: 20%;
         padding-right: 20%;
-    }  
-    #tableResults {
-        width: 56.5%;
     } 
+    #tableResults {
+        left: 22%;
+        width: 56%;
+    }
 }
   
 /*ipad*/
 @media only screen and (width: 768px) {
     #findRecipeContainer {
-        padding-left: 17%;
-        padding-right: 17%;
+        padding-left: 13%;
+        padding-right: 13%;
+    }
+    #tableResults {
+        left: 17%;
+        width: 65%;
     }
 }
 
@@ -39,6 +47,8 @@
     background: darkgoldenrod;
     width: 100%;
     border: none;
+    border-bottom-right-radius: 30px;
+    border-top-right-radius: 30px;
 }
 
 .field {

@@ -1,11 +1,24 @@
+.navbar-item {
+    text-shadow: 0 0 16px black;
+}
+
 span {
     margin-right: 5px;
 }
 
 #search-bar-container {
     width: 100%;
+    padding-left: 10%;
+    padding-right: 10%;
 }
 
+/*desktop*/
+@media only screen and (min-width: 768px) {
+    #search-bar-container {
+        padding-left: 2%;
+        padding-right: 2%;
+    }
+}
 
 .button {
     background: darkgoldenrod;
@@ -16,12 +29,9 @@ span {
     border-color: darkgoldenrod;
   }
 
-  a.navbar-item {
-    text-decoration: none;
+.navbar-burger {
+    color: white;
 }
-
-a.navbar-item:hover {
-    text-decoration: underline;
-    text-decoration-color: darkgoldenrod;
-    text-decoration-style: solid;
-}
+/*.navbar-menu, .navbar-end, .navbar-item {
+    background-color: darkgoldenrod;
+}*/

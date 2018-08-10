@@ -1,9 +1,9 @@
 <section class="hero is-fullheight has-background-light">
     <div class="hero-body">
         <div class="container">
-            <p *ngIf="listRecipeContext=='my-recipes'" class="subtitle is-2 has-text-black has-text-weight-semibold">Your list of recipes:</p>
-            <p *ngIf="listRecipeContext=='search'" class="subtitle is-2 has-text-black has-text-weight-semibold">Results for {{recipeTitle}}:</p>
-            <p *ngIf="listRecipeContext=='saved-recipes'" class="subtitle is-2 has-text-black has-text-weight-semibold">Your saved recipes:</p>
+            <p *ngIf="listRecipeContext=='my-recipes'" class="subtitle is-3 has-text-centered has-text-black has-text-weight-semibold">Your list of recipes:</p>
+            <p *ngIf="listRecipeContext=='search'" class="subtitle is-3 has-text-centered has-text-black has-text-weight-semibold">Results for "{{recipeTitle}}":</p>
+            <p *ngIf="listRecipeContext=='saved-recipes'" class="subtitle is-3 has-text-centered has-text-black has-text-weight-semibold">Your saved recipes:</p>
             <div class="columns is-multiline">
                 <div class="column is-4" *ngFor="let r of recipes; let i = index;">
                     <div class="card">
@@ -21,19 +21,19 @@
                                 <span>Title: {{r.title}}</span>
                             </label>
                             <p class="control">
-                                <button class="button is-medium has-text-white" routerLink="{{r.title}}_{{r._id}}">See more</button>
+                                <button class="button is-medium has-text-white has-text-weight-semibold" routerLink="{{r.title}}_{{r._id}}">See more</button>
 
-                                <button *ngIf="listRecipeContext=='my-recipes'" class="button is-medium has-text-white">Edit</button>
+                                <button *ngIf="listRecipeContext=='my-recipes'" class="button is-medium has-text-white has-text-weight-semibold">Edit</button>
 
                                 <ng-container *ngIf="listRecipeContext=='search' && isLoggedIn; then search"></ng-container>
                                 <ng-template #search>
-                                    <button *ngIf="inSavedRecipes(r); else notInSavedRecipes" class="button is-medium has-text-white" type="button" id="saveButton-{{i}}" (click)="saveUnsaveRecipe(i)">Saved</button>    
+                                    <button *ngIf="inSavedRecipes(r); else notInSavedRecipes" class="button is-medium has-text-white has-text-weight-semibold" type="button" id="saveButton-{{i}}" (click)="saveUnsaveRecipe(i)">Saved</button>    
                                     <ng-template #notInSavedRecipes>
-                                        <button class="button is-medium has-text-white" type="button" id="saveButton-{{i}}" (click)="saveUnsaveRecipe(i)">Save</button>        
+                                        <button class="button is-medium has-text-white has-text-weight-semibold" type="button" id="saveButton-{{i}}" (click)="saveUnsaveRecipe(i)">Save</button>        
                                     </ng-template>
                                 </ng-template>
 
-                                <button *ngIf="listRecipeContext=='saved-recipes'" class="button is-medium has-text-white" (click)="deleteSavedRecipe(i)">Delete</button>
+                                <button *ngIf="listRecipeContext=='saved-recipes'" class="button is-medium has-text-white has-text-weight-semibold" (click)="deleteSavedRecipe(i)">Delete</button>
                             </p>
                         </div>      
                     </div>      
@@ -42,3 +42,15 @@
         </div>
     </div>
 </section>
+<div class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+        <section class="modal-card-body" *ngIf="iEliminatedRecipe!=-1">
+            <p class="has-text-dark has-text-weight-semibold">You are removing "{{recipes[iEliminatedRecipe].title}}" from your saved recipes. Are you sure?</p>
+        </section>
+        <footer class="modal-card-foot">
+            <button class="button has-text-white has-text-weight-semibold" id="accept">Accept</button>
+            <button class="button has-text-white has-text-weight-semibold" id="cancel">Cancel</button>
+        </footer>
+    </div>
+</div>

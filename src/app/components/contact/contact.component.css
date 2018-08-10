@@ -19,14 +19,16 @@
 
 .button {
     background-color: darkgoldenrod;
-    border-color:white;
-    width: 30%;
+    /*border-color:white;*/
+    width: 100%;
+    border: none;
+    border-radius: 30px;
 }
 
 #contactForm {
     background: rgb(235, 235, 235, 0.6);
     border-color: darkgoldenrod;
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
 .field {

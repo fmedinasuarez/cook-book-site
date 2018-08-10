@@ -77,7 +77,7 @@ export class SearchBarComponent implements OnInit {
         this.status = res['status'];
         if(this.status == 200){
           let set = {}, recipes = res['recipes'];
-          this.results = recipes.filter(obj => !set[obj.title] && (set[obj.title] = true));
+          this.results = (recipes.filter(obj => !set[obj.title] && (set[obj.title] = true))).slice(0,6);
         }
         else {
           this.success = res['success'];

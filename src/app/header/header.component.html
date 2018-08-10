@@ -1,13 +1,13 @@
 <nav class="navbar is-fixed-top">
     <!-- logo/home -->
     <div class="navbar-brand">
-        <a *ngIf="!isLoggedIn" class="navbar-item has-text-dark has-text-weight-bold" routerLink="">
+        <a *ngIf="!isLoggedIn" class="navbar-item has-text-white has-text-weight-bold" routerLink="">
             <span>Cookbook</span>
             <span class="icon is-small">
                 <i class="fa fa-home"></i>
             </span>
         </a>
-        <a *ngIf="isLoggedIn" class="navbar-item has-text-dark has-text-weight-bold" routerLink="/main">
+        <a *ngIf="isLoggedIn" class="navbar-item has-text-white has-text-weight-bold" routerLink="/main">
             <span>Cookbook</span>
             <span class="icon is-small">
                 <i class="fa fa-home"></i>
@@ -29,37 +29,37 @@
             </div>
         </div>
         <div class="navbar-end">
-            <!--<a class="navbar-item has-text-dark has-text-weight-bold" routerLink='users'>Users</a>-->
+            <!--<a class="navbar-item has-text-white has-text-weight-bold" routerLink='users'>Users</a>-->
             <!--sign up -->
-            <a *ngIf="!isLoggedIn" class="navbar-item has-text-dark has-text-weight-bold" routerLink='sign-up'>
+            <a *ngIf="!isLoggedIn" class="navbar-item has-text-white has-text-weight-bold" routerLink='sign-up'>
                 <span>Sign Up</span>
                 <span class="icon is-small">
                     <i class="fa fa-user-circle"></i>
                 </span>
             </a>
             <!--log in -->
-            <a *ngIf="!isLoggedIn" class="navbar-item has-text-dark has-text-weight-bold" routerLink='log-in'>
+            <a *ngIf="!isLoggedIn" class="navbar-item has-text-white has-text-weight-bold" routerLink='log-in'>
                 <span>Log In</span>
                 <span class="icon is-small">
                     <i class="fa fa-sign-in"></i>
                 </span>
             </a>
             <!--log out -->
-            <a *ngIf="isLoggedIn" class="navbar-item has-text-dark has-text-weight-bold" (click)="logOut()">
+            <a *ngIf="isLoggedIn" class="navbar-item has-text-white has-text-weight-bold" (click)="logOut()">
                 <span>Log Out</span>
                 <span class="icon is-small">
                     <i class="fa fa-sign-out"></i>
                 </span>
             </a>
             <!--contact -->
-            <a class="navbar-item has-text-dark has-text-weight-bold" routerLink='contact'>
+            <a class="navbar-item has-text-white has-text-weight-bold" routerLink='contact'>
                 <span>Contact</span>
                 <span class="icon is-small">
                     <i class="fa fa-envelope"></i>
                 </span>
             </a>
             <!--learn more -->
-            <a class="navbar-item has-text-dark has-text-weight-bold">
+            <a class="navbar-item has-text-white has-text-weight-bold">
                 <span>Learn More</span>
                 <span class="icon is-small">
                     <i class="fa fa-info-circle"></i>

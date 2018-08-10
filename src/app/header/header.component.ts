@@ -49,26 +49,33 @@ export class HeaderComponent implements OnInit {
       if(navbarBurgerId.classList.contains('is-active')) {
         (navbar as HTMLElement).style.height = '100%';
         navbarMenuId.style.height = '100%';
-        (navbar as HTMLElement).style.background = 'rgba(255, 255, 255, 0.4)';
-        navbarMenuId.style.background = 'rgba(255, 255, 255, 0.4)';
-        for(var i=1; i<navbarItems.length; i++){
+        navbarMenuId.style.background = 'rgba(255, 255, 255, 0.8)';
+        navbarMenuId.style.paddingTop = '10%';
+        for(var i=2; i<navbarItems.length; i++){
           (navbarItems[i] as HTMLElement).style.fontSize = 'xx-large';
           (navbarItems[i].firstElementChild as HTMLElement).style.marginRight = '15px';
+          (navbarItems[i] as HTMLElement).style.paddingTop = '10%';
+          navbarItems[i].classList.remove('has-text-white');
+          navbarItems[i].classList.add('has-text-dark');
         }
       }
       else {
         (navbar as HTMLElement).style.height = '0';
-        navbarMenuId.style.background = 'rgba(255, 255, 255, 0.4)';
-        (navbar as HTMLElement).style.background = 'white';
-        for(var i=1; i<navbarItems.length; i++){
+        navbarMenuId.style.background = 'transparent';
+        navbarMenuId.style.paddingTop = (navbar as HTMLElement).style.paddingTop;
+        for(var i=2; i<navbarItems.length; i++){
           (navbarItems[i] as HTMLElement).style.fontSize = 'medium';
           (navbarItems[i].firstElementChild as HTMLElement).style.marginRight = '5px';
+          (navbarItems[i] as HTMLElement).style.paddingTop = '0';
+          navbarItems[i].classList.remove('has-text-dark');
+          navbarItems[i].classList.add('has-text-white');
         }
       }
     })
 
     /*when click on the document close the navbar burger menu*/
     document.addEventListener('click', (e) => {
+      /*e.stopPropagation();*/
       var target = e.target;
       if(this.showSearchBar) {
         var searchBarInput = document.getElementById('searchBarInput');
@@ -79,12 +86,18 @@ export class HeaderComponent implements OnInit {
         navbarMenuId.classList.remove('is-active');
         navbarBurgerId.classList.remove('is-active');
         (navbar as HTMLElement).style.height = '0';
-        (navbar as HTMLElement).style.background = 'white';
-        for(var i=1; i<navbarItems.length; i++){
+        navbarMenuId.style.background = 'transparent';
+        navbarMenuId.style.paddingTop = (navbar as HTMLElement).style.paddingTop;
+        for(var i=2; i<navbarItems.length; i++){
           (navbarItems[i] as HTMLElement).style.fontSize = 'medium';
           (navbarItems[i].firstElementChild as HTMLElement).style.marginRight = '5px';
+          (navbarItems[i] as HTMLElement).style.paddingTop = '0';
+          navbarItems[i].classList.remove('has-text-dark');
+          navbarItems[i].classList.add('has-text-white');
         }
       }
+      else
+        return;
     });
 
   }

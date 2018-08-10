@@ -28,6 +28,8 @@ export class LogInComponent implements OnInit {
         return;
       }
       this.showErrorMessage = false;
+      if(button != null)
+        button.innerHTML = "Log in";
     });
   }
 
@@ -37,20 +39,28 @@ export class LogInComponent implements OnInit {
       "password": this.password
     }
 
+    var logInButton = document.getElementById('logInButton');
+
     this.userService.loginUser(credentials).subscribe( res => {
       console.log(res);
       this.success = res['success'];
       this.status = res['status'];
 
       if(this.status == 500) {
+        logInButton.innerHTML = "Log in error";
         this.showErrorMessage = true;
         this.errorMessage = this.success;
       }
 
       if(this.status == 200) {
-        this.userService.setLoggedIn(true);
-        this.recipeService.setUserData(this.email);
-        this.router.navigate(['main']);
+        setTimeout(()=>{
+          logInButton.innerHTML = "Log in successfull";
+          setTimeout(() => {
+            this.userService.setLoggedIn(true);
+            this.recipeService.setUserData(this.email);
+            this.router.navigate(['main']);
+          },500);
+        },500);
       }
     })    
   }

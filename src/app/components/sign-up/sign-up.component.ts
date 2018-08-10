@@ -32,6 +32,8 @@ export class SignUpComponent implements OnInit {
         return;
       }
       this.showErrorMessage = false;
+      if(button != null)
+        button.innerHTML = "Sign Up";
     });
   }
 
@@ -43,19 +45,27 @@ export class SignUpComponent implements OnInit {
       "password": this.password,
     };
 
+    var signUpButton = document.getElementById('signUpButton');
+
     this.userService.signUpUser(user).subscribe(res => {
       this.success = res['success'];
       this.status = res['status'];
 
       if(this.status == 500) {
+        signUpButton.innerHTML = "Sign Up Error";
         this.showErrorMessage = true;
         this.errorMessage = this.success;
       }
 
       if(this.status == 200) {
-        this.userService.setLoggedIn(true);
-        this.recipeService.setUserData(this.email);
-        this.router.navigate(['/main']);
+        setTimeout(()=>{
+          signUpButton.innerHTML = "Sign Up Successfull";
+          setTimeout(() => {
+            this.userService.setLoggedIn(true);
+            this.recipeService.setUserData(this.email);
+            this.router.navigate(['/main']);
+          },500);
+        },500);
       }
     });
   }

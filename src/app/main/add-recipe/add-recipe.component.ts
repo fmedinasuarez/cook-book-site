@@ -36,6 +36,18 @@ export class AddRecipeComponent implements OnInit {
       }
       this.showErrorMessage = false;
     });
+    //When click on add new recipe button of modal close modal and clean inputs
+    var modal = document.querySelector('.modal');
+    var newRecipeButton = document.getElementById('b-4');
+    var inputs = document.getElementsByTagName("input");
+    var textArea = document.querySelector('.textarea');
+    newRecipeButton.addEventListener('click', () => {
+      modal.classList.toggle('is-active');
+      for(var i=0; i < inputs.length; i++)  {
+        inputs[i].value = '';
+      }
+      (textArea as HTMLTextAreaElement).value = '';
+    })
   }
 
   customTrackBy(i) {
@@ -66,14 +78,14 @@ export class AddRecipeComponent implements OnInit {
     this.recipeService.addRecipe(recipe).subscribe(res => {
       this.success = res['success'];
       this.status = res['status'];
-        
+      var modal = document.querySelector('.modal');
+
       if(this.status == 500) {
         this.showErrorMessage = true;
         this.errorMessage = this.success;
       }
       else {
-        alert(this.success);
-        this.router.navigate(['main']);
+        modal.classList.toggle('is-active');
       }
     })
   }

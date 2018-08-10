@@ -3,7 +3,7 @@
         <div class="container">
             <form id="signupForm" (ngSubmit)="processForm()">
                 <div class="field">
-                    <p class="subtitle is-2 has-text-black has-text-weight-semibold">Add a recipe</p>
+                    <p class="subtitle is-2 has-text-centered has-text-black has-text-weight-semibold">Add a recipe</p>
                     <div class="help is-error" *ngIf="showErrorMessage">
                         <p class="has-text-weight-semibold has-text-black" style="background-color:red">
                             {{ errorMessage }}
@@ -49,3 +49,15 @@
         </div>
     </div>
 </section>
+<div class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+        <section class="modal-card-body">
+            <p class="has-text-dark has-text-weight-semibold">Recipe added successfully</p>
+        </section>
+        <footer class="modal-card-foot">
+            <button class="button has-text-white has-text-weight-semibold" id="b-4">Add a recipe</button>
+            <button class="button has-text-white has-text-weight-semibold" id="b-5" routerLink="">Go to main</button>
+        </footer>
+    </div>
+</div>

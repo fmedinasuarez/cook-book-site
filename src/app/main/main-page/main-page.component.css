@@ -1,5 +1,5 @@
 .hero {
-    background-image: url('/assets/img/bg-image4.jpg') !important;
+    background-image: url('/assets/img/bg-image9.jpg') !important;
     background-size: cover;
     background-position: center center;
     background-attachment: fixed;
@@ -19,11 +19,11 @@
     }
   }
   
-  #b-4 {
+  /*#b-4 {
     border: none;
     background-color: darkgoldenrod; 
     width: 100%;
-  }
+  }*/
   
   .input {
     border-color: darkgoldenrod;
@@ -37,9 +37,11 @@
 
   /*mobile*/
   #b-1, #b-2, #b-3 {
-    border-color: white;
+    /*border-color: white;*/
+    border: none;
+    border-radius: 30px;
     background-color: darkgoldenrod; 
-    width: 50%;
+    width: 55%;
     margin: 1%;
   }
   /*desktop*/
@@ -52,11 +54,7 @@
   /*ipad*/
   @media only screen and (width: 768px) {
     #b-1, #b-2, #b-3 {
-        width: 20%;
-    }
-    .findRecipeContainer {
-      padding-left: 17%;
-      padding-right: 17%;
+        width: 23%;
     }
   }
 

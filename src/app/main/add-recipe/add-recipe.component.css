@@ -7,6 +7,7 @@
 
 .input, .textarea {
     border-color: darkgoldenrod;
+    border-radius: 30px;
 }
 
 [id*="b1-"] {
@@ -15,13 +16,25 @@
 
 #b-2 {
     background: darkgoldenrod;
-    border-color:white;
+    /*border-color:white;*/
+    border:none;
+    border-radius: 30px;
 }
 
 #b-3 {
     background-color: darkgoldenrod;
-    border-color:white;
-    width: 30%;
+    /*border-color:white;*/
+    border: none;
+    border-radius: 30px;
+    width: 100%;
+}
+
+#b-4, #b-5 {
+    background-color: darkgoldenrod;
+    /*border-color:white;*/
+    border: none;
+    border-radius: 30px;
+    width: 50%;
 }
 
 #fb-2 {
@@ -32,17 +45,24 @@
     padding-bottom: 5%;
 }
 
-/*desktop*/
+/*mobile*/
 .container {
-    padding-left: 25%;
-    padding-right: 25%;
+    margin-top: 3%;
 }
 
-/*mobile*/
-@media only screen and (max-width:768px){
+.modal-card {
+    width: 80%;
+    border-radius: 10px;
+}
+
+/*desktop*/
+@media only screen and (min-width:768px){
     .container {
-        padding-left: 0%;
-        padding-right: 0%;
+        padding-left: 25%;
+        padding-right: 25%;
+    }
+    .modal-card {
+        width: 40%;
     }
 }
 
@@ -52,12 +72,15 @@
         padding-left: 20%;
         padding-right: 20%;
     }
+    .modal-card {
+        width: 50%;
+    }
 }
 
 #signupForm {
     background: rgb(235, 235, 235, 0.6);
     border-color: darkgoldenrod;
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
 .field {
@@ -74,3 +97,5 @@
     padding-top: 0;
     padding-bottom: 0;
 }
+
+

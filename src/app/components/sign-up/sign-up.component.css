@@ -6,13 +6,16 @@
   }
 
 .input, .textarea {
-    border-color: grey
+    border-color: grey;
+    border-radius: 30px;
 }
 
 .button {
     background-color: darkgoldenrod;
-    border-color:white;
-    width: 30%;
+    /*border-color:white;*/
+    border: none;
+    width: 100%;
+    border-radius: 30px;
 }
 
 /*mobile*/
@@ -32,7 +35,7 @@
 .signupForm {
     background: rgb(235, 235, 235, 0.6);
     border-color: darkgoldenrod;
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
 .field {

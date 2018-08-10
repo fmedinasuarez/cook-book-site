@@ -18,6 +18,7 @@ export class RecipeListComponent implements OnInit {
 
   listRecipeContext;
   recipeTitle = '';
+  iEliminatedRecipe = -1;
 
   isLoggedIn = false;
 
@@ -98,6 +99,31 @@ export class RecipeListComponent implements OnInit {
         }
       }
     })
+
+    this.handleDeleteModal();
+  }
+
+  //Manage event click on accept and cancel buttons of modal displayed when delete button is clicked
+  handleDeleteModal() {
+    var modal = document.querySelector('.modal');
+    var cancelButton = document.getElementById('cancel');
+    cancelButton.addEventListener('click', (e) => {
+      modal.classList.toggle('is-active');
+    })
+
+    var acceptButton = document.getElementById('accept');
+    acceptButton.addEventListener('click', (e) => {
+      var data = {
+        "recipe" : this.recipes[this.iEliminatedRecipe], 
+        "user": this.recipeService.userData
+      };
+      this.recipeService.deleteSavedRecipe(data).subscribe(res => {
+        this.success = res['success'];
+        this.recipes.splice(this.iEliminatedRecipe,1);
+        this.iEliminatedRecipe = -1;
+      })
+      modal.classList.toggle('is-active');
+    })
   }
 
   saveUnsaveRecipe(i) {
@@ -130,17 +156,9 @@ export class RecipeListComponent implements OnInit {
   }
 
   deleteSavedRecipe(i) {
-    var selection = confirm("You are removing "+this.recipes[i].title+" from your saved recipes. Are you sure?");
-    if(selection) {
-      var data = {
-        "recipe" : this.recipes[i], 
-        "user": this.recipeService.userData
-      };
-      this.recipeService.deleteSavedRecipe(data).subscribe(res => {
-        this.success = res['success'];
-        this.recipes.splice(i, 1);
-      })
-    }
+    this.iEliminatedRecipe = i;
+    var modal = document.querySelector('.modal');
+    modal.classList.toggle('is-active');
   }
 
 }

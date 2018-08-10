@@ -11,29 +11,43 @@
 
 .card {
     border: 2px solid darkgoldenrod;
+    border-radius: 10px;
 }
 
+.modal-card {
+    width: 80%;
+    border-radius: 10px;
+}
+
+/*Mobile*/
 .container {
     background: rgb(235, 235, 235, 0.6);
     padding-top: 5%;
     padding-bottom: 5%;
-    padding-left: 5%;
-    padding-right: 5%;
+    padding-left: 6%;
+    /*padding-right: 1%;*/
+    border-radius: 10px;
+    margin-top: 3%;
 }
 
 .button {
     background: darkgoldenrod;
-    width: 48%;
+    width: 49%;
     border: none;
-    margin-left: 1%;
-    margin-right: 1%;
+    border-radius: 30px;
+    margin-left: 0.5%;
+    margin-right: 0.5%;
 }
 
+/*Desktop*/
 @media only screen and (min-width: 768px) {
     .container {
         padding-left: 10%;
         padding-right: 10%;
         margin-left: 20%;
         margin-right: 20%;
+    }
+    .modal-card {
+        width: 40%;
     }
 }
