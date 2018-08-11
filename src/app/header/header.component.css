@@ -1,9 +1,18 @@
+.navbar-menu {
+    background: transparent;
+}
+
 .navbar-item {
     text-shadow: 0 0 16px black;
 }
 
-span {
-    margin-right: 5px;
+.icon {
+    margin-left: 15px;
+}
+@media only screen and (min-width: 1025px) {
+    .icon {
+        margin-left: 5px;
+    }
 }
 
 #search-bar-container {
@@ -32,6 +41,19 @@ span {
 .navbar-burger {
     color: white;
 }
-/*.navbar-menu, .navbar-end, .navbar-item {
-    background-color: darkgoldenrod;
-}*/
+
+.navbar-background-transition {
+    background: darkgoldenrod;
+    transition: 1.5s linear;
+}
+
+.navbar-menu-transformation {
+    height: 100%;
+    padding-top: 10%;
+}
+
+.navbar-items-transformation {
+    font-size: xx-large;
+    padding-top: 10%;
+    text-shadow: none;
+}

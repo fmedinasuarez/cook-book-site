@@ -12,7 +12,6 @@ const routes: Routes = [
     path: ':recipeTitle_id',
     component: RecipeSingleComponent,
   }
-
 ];
 
 @NgModule({

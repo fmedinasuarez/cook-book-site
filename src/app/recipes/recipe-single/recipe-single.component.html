@@ -3,37 +3,102 @@
         <div class="container">
             <div class="card" *ngIf="recipe">
                 <div class="card-content">
+                    <!--show errors-->
+                    <div class="help is-error" *ngIf="showErrorMessage">
+                        <p class="has-text-weight-semibold has-text-black" style="background-color:red">
+                            {{ errorMessage }}
+                        </p>
+                    </div><br>
+                    <!--Publisher-->
                     <label class="label has-text-dark has-text-weight-semibold">
                         <span class="icon is-small">
                             <i class="fa fa-user"></i>
                         </span>
-                        <span> Publisher: {{recipe.user}}</span><br>
-                    </label><hr>
+                        <span> Publisher: {{recipe.user}}</span>
+                    </label>
+                    <hr>
+                    <!--Title-->
+                    <p class="control" *ngIf="context=='my-recipes'">
+                        <button type="button" class="button has-text-dark" style="float: right; border: none;" (click)="editTitle()">
+                        <span class="icon is-small">
+                            <i class="fa fa-edit"></i>
+                        </span>
+                        </button>
+                    </p><br>
                     <label class="label has-text-dark has-text-weight-semibold">
                         <span class="icon is-small">
                             <i class="fa fa-paperclip"></i>
                         </span>
-                        <span> Title: {{recipe.title}}</span><br>
-                    </label><hr>
+                        <span> Title:</span><span *ngIf="!eTitle"> {{recipe.title}}</span>
+                    </label>
+                    
+                    <input *ngIf="eTitle" value="{{title}}" id="iTitle" type="text" name="title" class="input is-primary" [(ngModel)]="title" required #titleInput="ngModel">
+                    <hr>
+                    <!--Ingredients-->
+                    <p class="control" *ngIf="context=='my-recipes'">
+                        <button type="button" class="button has-text-dark" style="float: right; border: none;" (click)="editIngredients()">
+                        <span class="icon is-small">
+                            <i class="fa fa-edit"></i>
+                        </span>
+                        </button>
+                    </p><br>
                     <label class="label has-text-dark has-text-weight-semibold">
                         <span class="icon is-small">
                             <i class="fa fa-list-ul"></i>
                         </span>
                         <span> Ingredients:</span><br>
 
-                        <span *ngFor="let i of recipe.ingredients" style="margin-left:10%">
-                            <span class="icon is-small">
-                                <i class="fa fa-slack"></i>
+                        <div *ngIf="!eIngs">
+                            <span *ngFor="let it of recipe.ingredients" style="margin-left:10%">
+                                <span class="icon is-small">
+                                    <i class="fa fa-slack"></i>
+                                </span>
+                                <span> {{it}}<br></span>
                             </span>
-                            <span> {{i}}<br></span>
+                        </div>
+                    </label>
+
+                    <div *ngIf="eIngs">
+                        <div class="field has-addons" *ngFor="let ing of ingredients; let i = index; trackBy:customTrackBy;" id="fIng-{{i}}">
+                            <p class="control is-expanded">
+                                <input value="{{ingredients[i]}}" type="text" name="ingredient{{i}}" class="input is-primary" [(ngModel)]="ingredients[i]" required>
+                            </p>
+                            <p class="control has-icons">
+                                <button type="button" class="button has-text-white" (click)="removeIngredient(i)" id="b1-{{i}}">
+                                    <span class="icon">
+                                        <i class="fa fa-times" id="i-{{i}}"></i>
+                                    </span>
+                                </button>
+                            </p>
+                        </div>
+                        <!--new ingredient button-->
+                        <div class="field" id="fb-2">
+                            <button type="button" class="button has-text-white" id="b-2"(click)="addIngredient()">New ingredient</button>
+                        </div>
+                    </div>
+                    <hr>
+                    <!--Steps-->
+                    <p class="control" *ngIf="context=='my-recipes'">
+                        <button type="button" class="button has-text-dark" style="float: right; border: none;" (click)="editSteps()">
+                        <span class="icon is-small">
+                            <i class="fa fa-edit"></i>
                         </span>
-                    </label><hr>
+                        </button>
+                    </p><br>
                     <label class="label has-text-dark has-text-weight-semibold">
                         <span class="icon is-small">
                             <i class="fa fa-pencil"></i>
                         </span>
-                        <span> Steps: {{recipe.steps}}</span>
+                        <span> Steps:</span><span *ngIf="!eSteps"> {{recipe.steps}}</span>
                     </label>
+
+                    <textarea *ngIf="eSteps" value="{{steps}}" class="textarea is-primary" name="steps" [(ngModel)]="steps" required #stepsInput="ngModel"></textarea>
+                    <br>
+                    <!--Buttons to accept or cancel the edition-->
+                    <div *ngIf="eTitle || eIngs || eSteps">
+                        <button class="button has-text-white" id="accept" (click)="acceptEdit()">Accept</button>
+                        <button class="button has-text-white" id="cancel" (click)="cancelEdit()">Cancel</button>
+                    </div>
                 </div>
             </div>
         </div>

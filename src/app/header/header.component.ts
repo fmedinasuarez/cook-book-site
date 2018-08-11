@@ -46,36 +46,29 @@ export class HeaderComponent implements OnInit {
       e.stopPropagation();
       navbarMenuId.classList.toggle('is-active');
       navbarBurgerId.classList.toggle('is-active');
+
       if(navbarBurgerId.classList.contains('is-active')) {
         (navbar as HTMLElement).style.height = '100%';
-        navbarMenuId.style.height = '100%';
-        navbarMenuId.style.background = 'rgba(255, 255, 255, 0.8)';
-        navbarMenuId.style.paddingTop = '10%';
+        navbar.classList.add('navbar-background-transition');
+        navbarMenuId.classList.add('navbar-menu-transformation');
+
         for(var i=2; i<navbarItems.length; i++){
-          (navbarItems[i] as HTMLElement).style.fontSize = 'xx-large';
-          (navbarItems[i].firstElementChild as HTMLElement).style.marginRight = '15px';
-          (navbarItems[i] as HTMLElement).style.paddingTop = '10%';
-          navbarItems[i].classList.remove('has-text-white');
-          navbarItems[i].classList.add('has-text-dark');
+          navbarItems[i].classList.add('navbar-items-transformation');
         }
       }
       else {
+        navbar.classList.remove('navbar-background-transition');
         (navbar as HTMLElement).style.height = '0';
-        navbarMenuId.style.background = 'transparent';
-        navbarMenuId.style.paddingTop = (navbar as HTMLElement).style.paddingTop;
+        navbarMenuId.classList.remove('navbar-menu-transformation');
+
         for(var i=2; i<navbarItems.length; i++){
-          (navbarItems[i] as HTMLElement).style.fontSize = 'medium';
-          (navbarItems[i].firstElementChild as HTMLElement).style.marginRight = '5px';
-          (navbarItems[i] as HTMLElement).style.paddingTop = '0';
-          navbarItems[i].classList.remove('has-text-dark');
-          navbarItems[i].classList.add('has-text-white');
+          navbarItems[i].classList.remove('navbar-items-transformation');
         }
       }
     })
 
     /*when click on the document close the navbar burger menu*/
     document.addEventListener('click', (e) => {
-      /*e.stopPropagation();*/
       var target = e.target;
       if(this.showSearchBar) {
         var searchBarInput = document.getElementById('searchBarInput');
@@ -85,20 +78,26 @@ export class HeaderComponent implements OnInit {
       if(navbarBurgerId.classList.contains('is-active'))  {
         navbarMenuId.classList.remove('is-active');
         navbarBurgerId.classList.remove('is-active');
+        navbar.classList.remove('navbar-background-transition');
         (navbar as HTMLElement).style.height = '0';
-        navbarMenuId.style.background = 'transparent';
-        navbarMenuId.style.paddingTop = (navbar as HTMLElement).style.paddingTop;
+        navbarMenuId.classList.remove('navbar-menu-transformation');
+
         for(var i=2; i<navbarItems.length; i++){
-          (navbarItems[i] as HTMLElement).style.fontSize = 'medium';
-          (navbarItems[i].firstElementChild as HTMLElement).style.marginRight = '5px';
-          (navbarItems[i] as HTMLElement).style.paddingTop = '0';
-          navbarItems[i].classList.remove('has-text-dark');
-          navbarItems[i].classList.add('has-text-white');
+          navbarItems[i].classList.remove('navbar-items-transformation');
         }
       }
-      else
-        return;
     });
+
+    //Add background to header when user scroll down 30 pixels
+    window.addEventListener('scroll', () => {
+      if(document.body.scrollTop > 30 || document.documentElement.scrollTop > 30) {
+        navbar.classList.add('navbar-background-transition');
+      }
+      else {
+        if (!navbarBurgerId.classList.contains('is-active'))
+          navbar.classList.remove('navbar-background-transition');
+      }
+    })
 
   }
 

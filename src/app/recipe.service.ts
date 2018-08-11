@@ -59,4 +59,12 @@ export class RecipeService {
     return this.http.get(`${this.apiUrl}recipeById/${id}`);
   }
 
+  deleteMyRecipe(data) {
+    return this.http.post(`${this.apiUrl}deleteMyRecipe`,data);
+  }
+
+  editRecipe(data) {
+    return this.http.put(`${this.apiUrl}editRecipe`,data);
+  }
+
 }

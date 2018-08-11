@@ -117,11 +117,20 @@ export class RecipeListComponent implements OnInit {
         "recipe" : this.recipes[this.iEliminatedRecipe], 
         "user": this.recipeService.userData
       };
-      this.recipeService.deleteSavedRecipe(data).subscribe(res => {
-        this.success = res['success'];
-        this.recipes.splice(this.iEliminatedRecipe,1);
-        this.iEliminatedRecipe = -1;
-      })
+      if(this.listRecipeContext == 'saved-recipes') {
+        this.recipeService.deleteSavedRecipe(data).subscribe(res => {
+          this.success = res['success'];
+          this.recipes.splice(this.iEliminatedRecipe,1);
+          this.iEliminatedRecipe = -1;
+        })
+      }
+      else if(this.listRecipeContext == 'my-recipes') {
+        this.recipeService.deleteMyRecipe(data).subscribe(res => {
+          this.success = res['success'];
+          this.recipes.splice(this.iEliminatedRecipe,1);
+          this.iEliminatedRecipe = -1;
+        })
+      }
       modal.classList.toggle('is-active');
     })
   }
@@ -155,7 +164,7 @@ export class RecipeListComponent implements OnInit {
     return false;
   }
 
-  deleteSavedRecipe(i) {
+  deleteRecipe(i) {
     this.iEliminatedRecipe = i;
     var modal = document.querySelector('.modal');
     modal.classList.toggle('is-active');

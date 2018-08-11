@@ -33,3 +33,27 @@ hr {
     border-color: darkgoldenrod;
     border-style: solid;
 }
+
+.input, .textarea {
+    border-color: darkgoldenrod;
+    border-radius: 30px;
+}
+
+[id*="b1-"] {
+    background: darkgoldenrod;
+}
+
+#b-2 {
+    background: darkgoldenrod;
+    border:none;
+    border-radius: 30px;
+}
+
+#accept, #cancel {
+    background: darkgoldenrod;
+    width: 49%;
+    border: none;
+    border-radius: 30px;
+    margin-left: 0.5%;
+    margin-right: 0.5%;
+}

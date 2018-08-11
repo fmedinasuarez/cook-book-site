@@ -45,7 +45,6 @@ export class SearchBarComponent implements OnInit {
 
     this.recipeService.searchBarToHeader.subscribe(searchBarToHeader => {
       this.searchBarToHeader = searchBarToHeader;
-      var input = document.getElementById('searchBarInput');
       var button = document.getElementById('searchButton');
       var formContainer = document.getElementById('findRecipeContainer');
       if(this.searchBarToHeader) {
@@ -59,15 +58,18 @@ export class SearchBarComponent implements OnInit {
         button.classList.remove('is-small');
         input.classList.add('is-large');
         button.classList.add('is-large');
+        (button as HTMLElement).style.borderColor = 'none';
       }
     });
   }
 
   processSearchBarForm(){
-    if(this.isLoggedIn)
-      this.router.navigate(['main/search:'+this.recipeName]);
-    else
-      this.router.navigate(['search:'+this.recipeName]);
+    if(this.recipeName != '') {
+      if(this.isLoggedIn)
+        this.router.navigate(['main/search:'+this.recipeName]);
+      else
+        this.router.navigate(['search:'+this.recipeName]);
+    }
   }
 
   onKey(event: any) {
