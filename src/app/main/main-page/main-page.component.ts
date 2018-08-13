@@ -14,12 +14,8 @@ export class MainPageComponent implements OnInit {
   constructor(private userService: UserService, private recipeService: RecipeService, private router: Router) { }
 
   ngOnInit() {
+    //Set bar to header to false
     this.recipeService.setSearchBarToHeader(false);
-  }
-
-  processSearchForm(){
-    const allInfo = `Recipe name: ${this.recipeName}.`;
-    alert(allInfo);
   }
 
 }

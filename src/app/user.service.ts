@@ -42,4 +42,8 @@ export class UserService {
     return this.http.post(`${this.apiUrl}login`, credentials);
   }
 
+  chat(data) {
+    return this.http.post(`${this.apiUrl}chat`, data);
+  }
+
 }

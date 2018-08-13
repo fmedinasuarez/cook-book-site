@@ -11,7 +11,7 @@
                     <form id="contactForm" (ngSubmit)="processForm()">
                         <div class="field">
                             <p class="subtitle is-2 has-text-centered has-text-black has-text-weight-semibold">Contact us!</p>  
-                        </div>
+                        </div><br>
                         <div class="field" id="fieldName">
                             <input type="text" name="name" class="input is-primary" placeholder="Your Name" [(ngModel)]="name" required #nameInput="ngModel">
                             <div class="help is-error" *ngIf="nameInput.invalid && nameInput.dirty">

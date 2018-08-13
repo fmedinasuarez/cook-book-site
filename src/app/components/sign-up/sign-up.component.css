@@ -11,17 +11,10 @@
 }
 
 .button {
-    background-color: darkgoldenrod;
-    /*border-color:white;*/
+    background-color: darkgoldenrod;    
     border: none;
     width: 100%;
     border-radius: 30px;
-}
-
-/*mobile*/
-.container {
-    padding-left: 0;
-    padding-right: 0;
 }
 
 /*desktop*/
@@ -36,17 +29,8 @@
     background: rgb(235, 235, 235, 0.6);
     border-color: darkgoldenrod;
     border-radius: 10px;
-}
-
-.field {
     padding-left: 5%;
     padding-right: 5%;
-}
-
-#button {
     padding-bottom: 5%;
-}
-
-.subtitle {
     padding-top: 5%;
 }

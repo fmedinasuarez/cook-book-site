@@ -17,7 +17,7 @@ import { SearchBarModule } from '../search-bar/search-bar.module';
   ],
   declarations: [
     MainPageComponent,
-    AddRecipeComponent,
+    AddRecipeComponent
   ]
 })
 export class MainModule { }

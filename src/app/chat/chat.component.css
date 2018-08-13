@@ -1,66 +1,71 @@
-#contact {
+#chat {
     position: fixed;
     bottom: 0;
-    max-height: 80%;
-    overflow: auto;
-    padding-top: 40px;
+    left:0;
+    width: 100%;
+    padding-right: 5px;
+    padding-left: 5px;
+    padding-bottom: 5px;
+    max-height: 300px;
+    z-index: 1;
+}
+/*Desktop*/
+@media only screen and (min-width: 768px) {
+  #chat {
+    left: 75%;
+    width: 25%;
   }
-  
-  #contact .handle {
-    width: 150px;
-    height: 40px;
-    text-align: center;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    position: relative;
-    background: whitesmoke;
-    top: 0;
-    left: 50%;
-    margin-left: -55px;
-  }
-  
-  #contact h2 {
-    color: whitesmoke;
-    padding: 10px 0;
-    margin: 0;
-    font-size: 14px;
-    letter-spacing: 4px;
-  }
-  
-  #contact .contact-info {
-    width: 150px;
-    height: 300px;
-    text-align: center;
-    position: relative;
-    /*background: skyblue;*/
-    top: 0;
-    left: 50%;
-    margin-left: -55px;
-  }
-
-  .field {
-      bottom: 0;
-      width: 140px;
-      position: fixed;
-      padding-left: 7.5px;
-      border-top-left-radius: 5px;
-      border-top-right-radius: 5px;
-  }
-
-  .container{
-    width: 120px;
-    position: relative;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    background: white;
-  }
-
-  #mainContainer{
-    width: 150px;
-    background: skyblue;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
 }
 
+#chat .handle {
+  width: 50px;
+  height:50px;
+  border-radius: 50%;
+  position: relative;
+  background: darkgoldenrod;
+  top: 0;
+  float: right;
+}
+
+#chat .card {
+  width: 100%;
+  height: 250px;
+  position: relative;
+  float: right;
+  top: 0px;
+  background: whitesmoke;
+  border: 2px solid darkgoldenrod;
+  border-radius: 10px;
+  padding: 2%;
+  transition: 2s;
+}
+
+.card-content {
+  overflow: auto; 
+  max-height: 65%;
+} 
+
+.card-header {
+  background: darkgoldenrod;
+}
+
+.card-footer {
+  bottom: 0;
+  position: absolute;
+  width: 97%;
+}
+
+#inputChatId {
+  border-radius: 30px;
+}
+
+#sendButtonId {
+  background: darkgoldenrod;
+  border-radius: 30px;
+}
+
+[id*="p-"] {
+  background: white;
+  border-radius: 30px;
+  margin-bottom: 3px;
+}

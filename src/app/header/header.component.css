@@ -44,7 +44,7 @@
 
 .navbar-background-transition {
     background: darkgoldenrod;
-    transition: 1.5s linear;
+    transition: 1s;
 }
 
 .navbar-menu-transformation {

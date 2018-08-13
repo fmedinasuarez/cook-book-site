@@ -25,6 +25,7 @@ export class RecipeListComponent implements OnInit {
   constructor(private userService: UserService, private recipeService: RecipeService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
+    //Set search bar to header to true
     this.recipeService.setSearchBarToHeader(true);
     //Susucribe to know if the user is logged in or out
     this.userService.isLoggedIn.subscribe(isLoggedIn => this.isLoggedIn = isLoggedIn);
@@ -134,7 +135,7 @@ export class RecipeListComponent implements OnInit {
       modal.classList.toggle('is-active');
     })
   }
-
+  //Manage the click on save or saved buuton of recipe i
   saveUnsaveRecipe(i) {
     var saveButton = document.getElementById("saveButton-"+i);
     var data = {
@@ -155,7 +156,7 @@ export class RecipeListComponent implements OnInit {
       });
     }
   }
-
+  //Verify if recipe i is in saved recipes
   inSavedRecipes(r):boolean {
     for(var i= 0; i < this.savedRecipes.length; i++){
       if (r._id === this.savedRecipes[i]._id)
@@ -164,6 +165,7 @@ export class RecipeListComponent implements OnInit {
     return false;
   }
 
+  //Set eliminated recipe atribute to i an d activate the modal with accept and cancel button
   deleteRecipe(i) {
     this.iEliminatedRecipe = i;
     var modal = document.querySelector('.modal');

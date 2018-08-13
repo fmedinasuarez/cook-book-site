@@ -30,13 +30,23 @@ export class RecipeSingleComponent implements OnInit {
   constructor(private route: ActivatedRoute, private userService: UserService, private recipeService: RecipeService) { }
 
   ngOnInit() {
+    //Suscribe to activated route and see if it has changed
     this.route.params.subscribe(params => {
       const recipeTitle_id = params['recipeTitle_id'];
+      //Take de _id of the recipe from the url params
       var id = recipeTitle_id.slice(recipeTitle_id.lastIndexOf("_")+1, recipeTitle_id.length);
+      //Get the recipe bi the _id taken before
       this.recipeService.getRecipeById(id).subscribe( res => {
-        this.recipe = res['recipe'];
+        this.status = res['status'];
+        //If not error get the recipe
+        if(this.status == 200)
+          this.recipe = res['recipe'];
+        else {//If error show a message error
+          this.showErrorMessage= true;
+          this.errorMessage = res['success'];
+        }
       })
-
+      //Take the context: my-recipes, saved-recipes or search.
       this.context = params['search-or-list'];
     })
 
@@ -49,17 +59,17 @@ export class RecipeSingleComponent implements OnInit {
       this.showErrorMessage = false;
     });
   }
-
+  //Manage the click on the edit title button
   editTitle() {
     this.title = this.recipe.title;
     this.eTitle = true;
   }
-
+  //Manage the click on the edit ingredients button
   editIngredients() {
     this.ingredients = this.recipe.ingredients.slice();
     this.eIngs = true;
   }
-
+  //Manage the click on the edit steps button
   editSteps() {
     this.steps = this.recipe.steps;
     this.eSteps = true;
@@ -68,11 +78,11 @@ export class RecipeSingleComponent implements OnInit {
   customTrackBy(i) {
     return i;
   }
-
+  //Add space to a new ingredient
   addIngredient() {
     this.ingredients.push("");
   }
-
+  //Manage click on add new ingreient button
   removeIngredient(i) {
     var inputIngredient = document.querySelectorAll('.control');
     if(inputIngredient.length == 7) {
@@ -82,7 +92,7 @@ export class RecipeSingleComponent implements OnInit {
     else
       this.ingredients.splice(i, 1);
   }
-
+  //Manage click on accept editon buuton
   acceptEdit() {
     if(this.eTitle)
       this.recipe.title = this.title;
@@ -108,7 +118,7 @@ export class RecipeSingleComponent implements OnInit {
     this.eIngs = false;
     this.eSteps = false;
   }
-  
+  //Manage click on cancel edition button
   cancelEdit() {
     this.eTitle = false;
     this.eIngs = false;

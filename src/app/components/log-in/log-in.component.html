@@ -7,7 +7,7 @@
                     <div class="help is-error" *ngIf="showErrorMessage">
                         <p class="has-text-weight-semibold has-text-black" style="background-color:red"> {{ errorMessage }}</p>
                     </div>
-                </div>
+                </div><br>
                 <div class="field" id="fEmail">
                     <p class="control has-icons-left">
                         <input class="input is-primary" type="text" name="email" placeholder="Email" [(ngModel)]="email">
@@ -24,13 +24,14 @@
                         </span>
                     </p>
                 </div>
-                <div class="field has has-text-weight-semibold">
+                <div class="field has-text-dark has-text-weight-semibold">
                     <label class="checkbox">
                         <input type="checkbox"> Remember me
                     </label><br>
                 </div>
                 <div class="field has-text-weight-semibold">
-                    <a class="text">Forgot your password?</a>
+                    <a class="text">Forgot your password?</a><br>
+                    New? <a class="text" routerLink="/sign-up">Create a new account</a>
                 </div>
                 <div class="field" id="button">
                     <p class="control">

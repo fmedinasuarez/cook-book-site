@@ -15,12 +15,6 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.recipeService.setSearchBarToHeader(false);
-    /*this.userService.setLoggedIn(false);*/
-  }
-  
-  processSearchForm(){
-    const allInfo = `Recipe name: ${this.recipeName}.`;
-    alert(allInfo);
   }
 
 }

@@ -15,12 +15,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { LogInComponent } from './components/log-in/log-in.component';
 import {Ng2PageScrollModule} from 'ng2-page-scroll';
-import { ChatComponent } from './chat/chat.component';
 import { SearchBarModule } from './search-bar/search-bar.module';
 import { AuthGuardIsLoggedInService } from './auth-guard-is-logged-in.service';
 import { AuthGuardIsLoggedOutService } from './auth-guard-is-logged-out.service';
 import { RecipeService } from './recipe.service';
 import { SearchBarComponent } from './search-bar/search-bar.component';
+import { ChatComponent } from './chat/chat.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +31,7 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
     ContactComponent,
     SignUpComponent,
     LogInComponent,
-    ChatComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,

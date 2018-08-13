@@ -33,14 +33,17 @@
                     <div class="help is-error" *ngIf="emailInput.invalid && emailInput.dirty">
                         Password is required.
                     </div>
-                </div>
+                </div><br>
 
-                <div class="field">
-                    <p class="subtitle is-7 has-text-black">By clicking Sign Up, you agree to our Terms, Data Policy and Cookies Policy.</p>
+                <div class="field has-text-weight-semibold">
+                    Already have an account? <a class="text" routerLink="/log-in">Log in</a>
                 </div>
 
                 <div class="field" id="button">
                     <button type="submit" class="button is-medium has-text-white" id="signUpButton">Sign up</button>
+                </div>
+                <div class="field">
+                    <p class="subtitle is-7 has-text-black">By clicking Sign Up, you agree to our Terms, Data and Cookies Policy.</p>
                 </div>
             </form>
         </div>

@@ -24,8 +24,9 @@ export class AddRecipeComponent implements OnInit {
   constructor(private recipeService: RecipeService, private router: Router) { }
 
   ngOnInit() {
+    //Set search bar to header to true
     this.recipeService.setSearchBarToHeader(true);
-
+    //Init ingredients array to add the first ingredient
     this.ingredients.push("");
     
     document.addEventListener('click', (event) => {
@@ -36,7 +37,7 @@ export class AddRecipeComponent implements OnInit {
       }
       this.showErrorMessage = false;
     });
-    //When click on add new recipe button of modal close modal and clean inputs
+    //When click on add new recipe button of the modal, close modal and clean inputs
     var modal = document.querySelector('.modal');
     var newRecipeButton = document.getElementById('b-4');
     var inputs = document.getElementsByTagName("input");
@@ -53,11 +54,11 @@ export class AddRecipeComponent implements OnInit {
   customTrackBy(i) {
     return i;
   }
-
+  //When click on add ingredient button, add space to a new ingredient
   addIngredient() {
     this.ingredients.push("");
   }
-
+  //When click on delete ingredient, delete the ingredient i
   removeIngredient(i) {
     var inputIngredient = document.querySelectorAll('.control');
     if(inputIngredient.length == 4) {
@@ -67,7 +68,7 @@ export class AddRecipeComponent implements OnInit {
     else
       this.ingredients.splice(i, 1);
   }
-
+  //Process the form when click on publish button
   processForm(){
     var recipe = {
       "title": this.title,

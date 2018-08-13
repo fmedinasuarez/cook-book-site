@@ -1,31 +1,38 @@
-<div id="contact">
-    <h2 class="handle">
-        <a>Chat with us!</a>
+<div id="chat">
+    <h2 class="handle" title="Chat with Us!">
+        <span class="icon is-large" id="searchIcon">
+            <i class="fa fa-comment" id="iconChat" style="color:white"></i>
+        </span>
     </h2>
-    <div class="contact-info" style="display: none;">
-        <div class="container has-text-left" id="mainContainer">
-            <br>
-            <div class="container">
-                <p>Fernando:</p>
-                <p>texto mas texto mas texto mas texto mas texto mas texto</p>
-            </div><br>
-            <div class="container">
-                texto mas texto mas texto mas texto mas texto mas texto
-            </div><br>
-            <div class="container">
-                texto mas texto mas texto mas texto mas texto mas texto
-            </div><br>
-            <div class="container">
-                texto mas texto mas texto mas texto mas texto mas texto
-            </div><br>
-            <div class="container">
-                texto mas texto mas texto mas texto mas texto mas texto
-            </div><br><br>
-            <div class="field">
-                <p class="control">
-                    <input class="input" type="text">
-                </p>
+
+    <div class="card" style="display: none;">
+        <header class="card-header">
+            <p class="card-header-title has-text-white">
+                Chat on line
+            </p>  
+            <a class="card-header-icon has-text-white" aria-label="more options">
+                <span class="icon">
+                    <i class="fa fa-angle-down" aria-hidden="true"></i>
+                </span>
+            </a>
+        </header>  
+        <div class="card-content">
+            <div *ngFor="let m of messages; let i=index" id="cc-{{i}}">
+                <p id="p-{{i}}">{{m}}</p>
             </div>
         </div>
+        <footer class="card-footer">
+            <form (ngSubmit)="submitChatForm()" style="width: 100%">
+                <div class="field has-addons">
+                    <p class="control is-expanded">
+                        <input class="input" type="text" name="message" id="inputChatId" [(ngModel)]="message">
+                    </p>
+                    <p class="control">
+                        <button class="button has-text-white" id="sendButtonId" type="submit">Send</button>
+                    </p>
+                </div>
+            </form>
+        </footer>
     </div>
+    
 </div>

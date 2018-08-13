@@ -23,6 +23,7 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
+    //Suscribe to search bar to header to create the search bar component or destroy it
     this.recipeService.searchBarToHeader.subscribe(showSearchBar => {
       this.showSearchBar = showSearchBar;
       if(this.showSearchBar)
@@ -98,7 +99,6 @@ export class HeaderComponent implements OnInit {
           navbar.classList.remove('navbar-background-transition');
       }
     })
-
   }
 
   //To create searchaBarComponent on header

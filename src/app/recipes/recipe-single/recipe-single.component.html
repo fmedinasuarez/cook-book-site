@@ -19,7 +19,7 @@
                     <hr>
                     <!--Title-->
                     <p class="control" *ngIf="context=='my-recipes'">
-                        <button type="button" class="button has-text-dark" style="float: right; border: none;" (click)="editTitle()">
+                        <button type="button" class="button has-text-dark" title="Edit" style="float: right; border: none;" (click)="editTitle()">
                         <span class="icon is-small">
                             <i class="fa fa-edit"></i>
                         </span>
@@ -36,7 +36,7 @@
                     <hr>
                     <!--Ingredients-->
                     <p class="control" *ngIf="context=='my-recipes'">
-                        <button type="button" class="button has-text-dark" style="float: right; border: none;" (click)="editIngredients()">
+                        <button type="button" class="button has-text-dark" title="Edit" style="float: right; border: none;" (click)="editIngredients()">
                         <span class="icon is-small">
                             <i class="fa fa-edit"></i>
                         </span>
@@ -64,7 +64,7 @@
                                 <input value="{{ingredients[i]}}" type="text" name="ingredient{{i}}" class="input is-primary" [(ngModel)]="ingredients[i]" required>
                             </p>
                             <p class="control has-icons">
-                                <button type="button" class="button has-text-white" (click)="removeIngredient(i)" id="b1-{{i}}">
+                                <button type="button" class="button has-text-white" title="Delete ingredient" (click)="removeIngredient(i)" id="b1-{{i}}">
                                     <span class="icon">
                                         <i class="fa fa-times" id="i-{{i}}"></i>
                                     </span>
@@ -79,7 +79,7 @@
                     <hr>
                     <!--Steps-->
                     <p class="control" *ngIf="context=='my-recipes'">
-                        <button type="button" class="button has-text-dark" style="float: right; border: none;" (click)="editSteps()">
+                        <button type="button" class="button has-text-dark" title="Edit" style="float: right; border: none;" (click)="editSteps()">
                         <span class="icon is-small">
                             <i class="fa fa-edit"></i>
                         </span>

@@ -23,17 +23,18 @@ export class SearchBarComponent implements OnInit {
   constructor(private router : Router, private recipeService: RecipeService, private userService: UserService) { }
 
   ngOnInit() {
+    //Suscribe to isLoggedIn to know if the user is logged in or out
     this.userService.isLoggedIn.subscribe(isLoggedIn => this.isLoggedIn = isLoggedIn);
 
     var input = document.getElementById('searchBarInput');
     var table = document.getElementById('tableResults');
-
+    //On input focus event show the table with results
     input.addEventListener('focus',() => {
       if((table as HTMLElement).style.display == "none") { 
         (table as HTMLElement).style.display = "block";
       }
     })
-
+    //Close the results table only when user click on the dom but the table
     document.addEventListener('click',(event) => {
       var target = event.target;
       if(target != input && target!= table){
@@ -42,7 +43,7 @@ export class SearchBarComponent implements OnInit {
         }
       }
     })
-
+    //Suscribe to search bar to header to customize itself
     this.recipeService.searchBarToHeader.subscribe(searchBarToHeader => {
       this.searchBarToHeader = searchBarToHeader;
       var button = document.getElementById('searchButton');
@@ -62,7 +63,7 @@ export class SearchBarComponent implements OnInit {
       }
     });
   }
-
+  //Procces the form
   processSearchBarForm(){
     if(this.recipeName != '') {
       if(this.isLoggedIn)
@@ -71,7 +72,7 @@ export class SearchBarComponent implements OnInit {
         this.router.navigate(['search:'+this.recipeName]);
     }
   }
-
+  //Everytime the user enter a letter on input search bar a petition is sent to the server and the table is refreshed
   onKey(event: any) {
     this.values = event.target.value;
     if(this.values != '') {
@@ -89,7 +90,7 @@ export class SearchBarComponent implements OnInit {
     else
       this.results = [];
   }
-
+  //Manage click on the i element from the table results
   searchClicked(i) {
     this.recipeName = this.results[i].title;
     if(this.isLoggedIn)
