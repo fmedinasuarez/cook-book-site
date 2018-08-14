@@ -28,3 +28,8 @@
   position: relative;
   left: 45%;
 }
+
+#cookBookId {
+  font-family: Lobster;
+  font-size: 70px;
+}

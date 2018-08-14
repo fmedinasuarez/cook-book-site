@@ -15,6 +15,15 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.recipeService.setSearchBarToHeader(false);
+
+    var cookBookId = document.getElementById('cookBookId');
+    cookBookId.addEventListener('mouseover', () => {
+      cookBookId.classList.add('animated', 'pulse');
+    })
+
+    cookBookId.addEventListener('mouseout', () => {
+      cookBookId.classList.remove('animated', 'pulse');
+    })
   }
 
 }

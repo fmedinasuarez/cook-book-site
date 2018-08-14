@@ -13,6 +13,8 @@ export class AddRecipeComponent implements OnInit {
   title;
   ingredients: any[] = [];
   steps;
+  image;
+
   email;
 
   showErrorMessage = false;
@@ -43,6 +45,8 @@ export class AddRecipeComponent implements OnInit {
     var inputs = document.getElementsByTagName("input");
     var textArea = document.querySelector('.textarea');
     newRecipeButton.addEventListener('click', () => {
+      this.ingredients = [];
+      this.ingredients.push("");
       modal.classList.toggle('is-active');
       for(var i=0; i < inputs.length; i++)  {
         inputs[i].value = '';
@@ -60,14 +64,18 @@ export class AddRecipeComponent implements OnInit {
   }
   //When click on delete ingredient, delete the ingredient i
   removeIngredient(i) {
-    var inputIngredient = document.querySelectorAll('.control');
-    if(inputIngredient.length == 4) {
+    if(i == 0 && this.ingredients.length == 1) {
       this.showErrorMessage = true;
       this.errorMessage = "At least one ingredient is required.";
     }
     else
       this.ingredients.splice(i, 1);
   }
+
+  /*onFileChanged(e) {
+    this.image = e.target.files[0];
+  }*/
+
   //Process the form when click on publish button
   processForm(){
     var recipe = {
@@ -75,6 +83,7 @@ export class AddRecipeComponent implements OnInit {
       "ingredients": this.ingredients,
       "steps": this.steps,
       "user" : this.recipeService.userData,
+      "image" : this.image
     }
     this.recipeService.addRecipe(recipe).subscribe(res => {
       this.success = res['success'];

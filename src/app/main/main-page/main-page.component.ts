@@ -16,6 +16,15 @@ export class MainPageComponent implements OnInit {
   ngOnInit() {
     //Set bar to header to false
     this.recipeService.setSearchBarToHeader(false);
+
+    var cookBookId = document.getElementById('cookBookId');
+    cookBookId.addEventListener('mouseover', () => {
+      cookBookId.classList.add('animated', 'pulse');
+    })
+
+    cookBookId.addEventListener('mouseout', () => {
+      cookBookId.classList.remove('animated', 'pulse');
+    })
   }
 
 }

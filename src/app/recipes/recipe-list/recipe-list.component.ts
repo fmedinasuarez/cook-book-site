@@ -12,6 +12,7 @@ export class RecipeListComponent implements OnInit {
 
   recipes = [];
   savedRecipes = [];
+  images= [];
 
   status;
   success;

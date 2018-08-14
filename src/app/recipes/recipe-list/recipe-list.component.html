@@ -7,6 +7,7 @@
             <div class="columns is-multiline">
                 <div class="column is-4" *ngFor="let r of recipes; let i = index;">
                     <div class="card">
+                        <img src='' id="imgR-{{i}}" style="display: none; width: 100%">
                         <div class="card-content">
                             <label class="label has-text-dark has-text-weight-semibold">
                                 <span class="icon is-small">
@@ -15,10 +16,7 @@
                                 <span>Publisher: {{r.user}}</span>
                             </label>
                             <label class="label has-text-dark has-text-weight-semibold">
-                                <span class="icon is-small">
-                                    <i class="fa fa-paperclip"></i>
-                                </span>
-                                <span>Title: {{r.title}}</span>
+                                <span class="title">{{r.title}}</span>
                             </label>
                             <p class="control">
                                 <button class="button has-text-white" routerLink="{{r.title}}_{{r._id}}">See more</button>
