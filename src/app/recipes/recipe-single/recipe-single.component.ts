@@ -27,6 +27,8 @@ export class RecipeSingleComponent implements OnInit {
   success = '';
   status = -1;
 
+  currentImg = 0;
+
   constructor(private route: ActivatedRoute, private userService: UserService, private recipeService: RecipeService) { }
 
   ngOnInit() {
@@ -125,4 +127,21 @@ export class RecipeSingleComponent implements OnInit {
     this.eSteps = false;
   }
 
+  prevImg() {
+    var imgSlider = document.getElementById( "imgSlider");
+    this.currentImg--;
+    if(this.currentImg < 0) {
+      this.currentImg = this.recipe.imagesData.length - 1;
+    }
+    (imgSlider as HTMLImageElement).src = this.recipe.imagesData[this.currentImg]; 
+  }
+
+  nextImg() {
+    var imgSlider = document.getElementById( "imgSlider");
+    this.currentImg++;
+    if(this.currentImg >= this.recipe.imagesData.length) {
+      this.currentImg = 0;
+    }
+    (imgSlider as HTMLImageElement).src = this.recipe.imagesData[this.currentImg];
+  }
 }

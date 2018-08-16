@@ -57,3 +57,34 @@ hr {
     margin-left: 0.5%;
     margin-right: 0.5%;
 }
+
+.imageSliderContainer {
+    width: 100%;
+    position: relative;
+}
+
+.imageSliderContainer img {
+    width: 100%;
+    height: auto;
+}
+
+.imageSliderContainer button {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: darkgoldenrod;
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
+  }
+
+  .imageSliderContainer #prevButtonId {
+      top: 50%;
+      left: 0;
+  }
+
+  .imageSliderContainer #nextButtonId {
+    top: 50%;
+    left: 100%;
+}
+

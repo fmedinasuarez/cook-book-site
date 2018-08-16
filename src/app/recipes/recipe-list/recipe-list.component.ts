@@ -105,7 +105,7 @@ export class RecipeListComponent implements OnInit {
     this.handleDeleteModal();
   }
 
-  //Manage event click on accept and cancel buttons of modal displayed when delete button is clicked
+  //Manage click event on accept and cancel buttons of modal displayed when delete button is clicked
   handleDeleteModal() {
     var modal = document.querySelector('.modal');
     var cancelButton = document.getElementById('cancel');
@@ -134,6 +134,7 @@ export class RecipeListComponent implements OnInit {
         })
       }
       modal.classList.toggle('is-active');
+      return;
     })
   }
   //Manage the click on save or saved buuton of recipe i
@@ -171,6 +172,10 @@ export class RecipeListComponent implements OnInit {
     this.iEliminatedRecipe = i;
     var modal = document.querySelector('.modal');
     modal.classList.toggle('is-active');
+  }
+
+  loadImage(e) {
+    console.log(e.target);
   }
 
 }

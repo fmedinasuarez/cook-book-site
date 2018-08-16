@@ -22,6 +22,10 @@ export class AddRecipeComponent implements OnInit {
 
   success;
   status;
+
+  imagesFile : Array<File> = [];
+  imagesData = [];
+  
   
   constructor(private recipeService: RecipeService, private router: Router) { }
 
@@ -72,9 +76,26 @@ export class AddRecipeComponent implements OnInit {
       this.ingredients.splice(i, 1);
   }
 
-  /*onFileChanged(e) {
-    this.image = e.target.files[0];
-  }*/
+  deleteImage(j) {
+    this.imagesFile.splice(j,1);
+    this.imagesData.splice(j,1);
+  }
+
+  onFileChanged(event) {
+    let initLenght = this.imagesFile.length;
+    this.imagesFile.push(...event.target.files);
+    for(var i = initLenght; i < this.imagesFile.length; i++) {
+      this.writeImageData(this.imagesFile[i],i);
+    }
+  }
+
+  writeImageData(imageFile,i) {
+    var fr = new FileReader();
+    fr.onload = () => {
+      this.imagesData[i] = fr.result;
+    }
+    fr.readAsDataURL(imageFile);
+  }
 
   //Process the form when click on publish button
   processForm(){
@@ -83,7 +104,7 @@ export class AddRecipeComponent implements OnInit {
       "ingredients": this.ingredients,
       "steps": this.steps,
       "user" : this.recipeService.userData,
-      "image" : this.image
+      "imagesData": this.imagesData,
     }
     this.recipeService.addRecipe(recipe).subscribe(res => {
       this.success = res['success'];

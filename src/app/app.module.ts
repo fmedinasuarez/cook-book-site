@@ -21,6 +21,7 @@ import { AuthGuardIsLoggedOutService } from './auth-guard-is-logged-out.service'
 import { RecipeService } from './recipe.service';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { ChatComponent } from './chat/chat.component';
+import { SafeHtmlPipe } from './safe-html.pipe';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { ChatComponent } from './chat/chat.component';
     ContactComponent,
     SignUpComponent,
     LogInComponent,
-    ChatComponent
+    ChatComponent,
+    SafeHtmlPipe
   ],
   imports: [
     BrowserModule,

@@ -41,12 +41,20 @@
                 <div class="field" id="textAreaField">
                     <textarea class="textarea is-primary" name="steps" placeholder="Describe how you made it" [(ngModel)]="steps" required #stepsInput="ngModel"></textarea>
                 </div>
-                <!--<div class="field">
-                    <input style="display: none" type="file" (change)="onFileChanged($event)" #fileInput>
-                    <button id="b-6" type="button" class="button has-text-white" (click)="fileInput.click()">
-                        Upload images (optional)
-                    </button>
-                </div>-->
+                <div class="field">
+                    <input style="display: none" type="file" (change)="onFileChanged($event)" #fileInput multiple>
+                    <button class="button has-text-white" type="button" id="b-6" (click)="fileInput.click()">Upload Images (optional)</button>
+                </div>
+                <div class="field has-addons" *ngFor="let img of imagesFile; let j = index" id="fImg-{{j}}">
+                    <p class="control has-icons-left">
+                        <button type="button" class="button has-text-white" (click)="deleteImage(j)" id="b2-{{j}}">
+                            <span class="icon is-left">
+                                <i class="fa fa-times" id="i2-{{j}}"></i>
+                            </span>
+                        </button>
+                        <span class="has-text-black">{{img.name}}</span>
+                    </p>
+                </div>
                 <!--publish button-->
                 <div class="field" id="fb-3">
                     <button type="submit" class="button is-medium has-text-white" id="b-3">Publish</button>
