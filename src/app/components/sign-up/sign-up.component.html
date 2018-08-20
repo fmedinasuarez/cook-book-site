@@ -9,27 +9,27 @@
                     </div>
                 </div><br>
                 <div class="field">
-                    <input type="text" name="name" class="input is-primary" placeholder="Your Name" [(ngModel)]="name" required #nameInput="ngModel">
+                    <input type="text" name="name" class="input is-primary" placeholder="Your Name" [(ngModel)]="user.name" required #nameInput="ngModel">
                     <div class="help is-error" *ngIf="nameInput.invalid && nameInput.dirty">
                         Name is required.
                     </div>
                 </div>
                 <div class="field">
-                    <input type="text" name="surname" class="input is-primary" placeholder="Your Surname" [(ngModel)]="sureName" required #surnameInput="ngModel">
+                    <input type="text" name="surname" class="input is-primary" placeholder="Your Surname" [(ngModel)]="user.sureName" required #surnameInput="ngModel">
                     <div class="help is-error" *ngIf="surnameInput.invalid && surnameInput.dirty">
                         Surname is required.
                     </div>
                 </div>
                 
                 <div class="field">
-                    <input type="email" name="email" class="input is-primary" placeholder="Your Email" [(ngModel)]="email" required email #emailInput="ngModel">
+                    <input type="email" name="email" class="input is-primary" placeholder="Your Email" [(ngModel)]="user.email" required email #emailInput="ngModel">
                     <div class="help is-error" *ngIf="emailInput.invalid && emailInput.dirty">
                         Email is required and needs to be valid.
                     </div>
                 </div>
 
                 <div class="field">
-                    <input class="input" type="password" name="password" placeholder="New Password" [(ngModel)]="password" required #passwordInput="ngModel">
+                    <input class="input" type="password" name="password" placeholder="New Password" [(ngModel)]="user.password" required #passwordInput="ngModel">
                     <div class="help is-error" *ngIf="emailInput.invalid && emailInput.dirty">
                         Password is required.
                     </div>

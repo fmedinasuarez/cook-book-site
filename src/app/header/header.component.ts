@@ -14,8 +14,6 @@ export class HeaderComponent implements OnInit {
   componentRef: any;
   @ViewChild('searchbarcontainer', { read: ViewContainerRef }) entry: ViewContainerRef;
 
-  email;
-  password;
   isLoggedIn: boolean= false;
   showSearchBar: boolean= false;
 

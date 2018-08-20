@@ -3,6 +3,8 @@ import { UserListComponent } from '../../users/user-list/user-list.component';
 import { UserService } from '../../user.service';
 import { Router } from '@angular/router';
 import { RecipeService } from '../../recipe.service';
+import { user } from '../../user';
+import { response } from '../../response';
 
 @Component({
   selector: 'app-sign-up',
@@ -11,13 +13,16 @@ import { RecipeService } from '../../recipe.service';
 })
 export class SignUpComponent implements OnInit {
 
-  name;
-  sureName;
-  email;
-  password;
+  user: user = {
+    name: '' ,
+    sureName: '',
+    email: '',
+    password: '',
+    myRecipes: [],
+    savedRecipes: [],
+  }
 
-  success;
-  status;
+  response : response = null;
 
   showErrorMessage=false;
   errorMessage;
@@ -38,31 +43,23 @@ export class SignUpComponent implements OnInit {
   }
 
   signUpForm(){
-    var user = {
-      "name": this.name,
-      "sureName": this.sureName,
-      "email": this.email,
-      "password": this.password,
-    };
-
     var signUpButton = document.getElementById('signUpButton');
 
-    this.userService.signUpUser(user).subscribe(res => {
-      this.success = res['success'];
-      this.status = res['status'];
+    this.userService.signUpUser(this.user).subscribe(res => {
+      this.response = res;
 
-      if(this.status == 500) {
+      if(this.response.status == 500) {
         signUpButton.innerHTML = "Sign Up Error";
         this.showErrorMessage = true;
-        this.errorMessage = this.success;
+        this.errorMessage = this.response.success;
       }
 
-      if(this.status == 200) {
+      if(this.response.status == 200) {
         setTimeout(()=>{
           signUpButton.innerHTML = "Sign Up Successfull";
           setTimeout(() => {
             this.userService.setLoggedIn(true);
-            this.recipeService.setUserData(this.email);
+            this.recipeService.setUserData(this.user.email);
             this.router.navigate(['/main']);
           },500);
         },500);

@@ -6,6 +6,7 @@
             <p *ngIf="listRecipeContext=='saved-recipes'" class="subtitle is-3 has-text-centered has-text-black has-text-weight-semibold">Your saved recipes:</p>
             <div class="columns is-multiline">
                 <div class="column is-4" *ngFor="let r of recipes; let i = index;">
+                    <!--<div *ngIf="!r" class="lds-ring"><div></div><div></div><div></div><div></div></div>-->
                     <div class="card">
                         <img *ngIf="r.imagesData[0]" src="{{r.imagesData[0]}}" id="imgR-{{i}}" style="width: 100%">
                         <div class="card-content">

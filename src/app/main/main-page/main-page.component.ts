@@ -9,7 +9,6 @@ import { RecipeService } from '../../recipe.service';
   styleUrls: ['main-page.component.css']
 })
 export class MainPageComponent implements OnInit {
-  recipeName;
 
   constructor(private userService: UserService, private recipeService: RecipeService, private router: Router) { }
 

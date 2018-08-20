@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { RecipeService } from '../../recipe.service';
-import { ActivatedRoute, Router } from '../../../../node_modules/@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../../user.service';
+import { recipe } from '../../recipe';
+import { response } from '../../response';
 
 @Component({
   selector: 'app-recipe-list',
@@ -10,12 +12,10 @@ import { UserService } from '../../user.service';
 })
 export class RecipeListComponent implements OnInit {
 
-  recipes = [];
-  savedRecipes = [];
-  images= [];
+  recipes : Array<recipe> = [];
+  savedRecipes : Array<recipe> = [];
 
-  status;
-  success;
+  response: response;
 
   listRecipeContext;
   recipeTitle = '';
@@ -41,24 +41,18 @@ export class RecipeListComponent implements OnInit {
         if(this.listRecipeContext == 'my-recipes') {
           match = true
           this.recipeService.getMyRecipes().subscribe( res => {
-            this.status = res['status'];
-            if(this.status == 200){
-              this.recipes = res['myRecipes'];
-            }
-            else {
-              this.success = res['success'];
+            this.response = res;
+            if(this.response.status == 200){
+              this.recipes = this.response.data;
             }
           });
         }//2) saved-recipes
         else if(this.listRecipeContext == 'saved-recipes') {
           match = true
           this.recipeService.getSavedRecipes().subscribe( res => {
-            this.status = res['status'];
-            if(this.status == 200){
-              this.recipes = res['savedRecipes'];
-            }
-            else {
-              this.success = res['success'];
+            this.response = res;
+            if(this.response.status == 200){
+              this.recipes = this.response.data;
             }
           });
         }
@@ -76,16 +70,14 @@ export class RecipeListComponent implements OnInit {
           if(this.recipeTitle != '') {
             if(this.isLoggedIn) {
               this.recipeService.getSavedRecipes().subscribe(res => {
-                this.savedRecipes = res['savedRecipes']
+                this.response = res;
+                this.savedRecipes = this.response.data;
               });
             }
             this.recipeService.getRecipesByTitle(this.recipeTitle).subscribe(res => {
-              this.status = res['status'];
-              if(this.status == 200){
-                this.recipes = res['recipes'];
-              }
-              else {
-                this.success = res['success'];
+              this.response = res;
+              if(this.response.status == 200){
+                this.recipes = this.response.data;
               }
             })
           }
@@ -121,14 +113,14 @@ export class RecipeListComponent implements OnInit {
       };
       if(this.listRecipeContext == 'saved-recipes') {
         this.recipeService.deleteSavedRecipe(data).subscribe(res => {
-          this.success = res['success'];
+          this.response = res;
           this.recipes.splice(this.iEliminatedRecipe,1);
           this.iEliminatedRecipe = -1;
         })
       }
       else if(this.listRecipeContext == 'my-recipes') {
         this.recipeService.deleteMyRecipe(data).subscribe(res => {
-          this.success = res['success'];
+          this.response = res;
           this.recipes.splice(this.iEliminatedRecipe,1);
           this.iEliminatedRecipe = -1;
         })
@@ -148,13 +140,13 @@ export class RecipeListComponent implements OnInit {
       saveButton.innerHTML = "Saved";
       //Save recipe i in user savedRecipe's collection docs
       this.recipeService.saveRecipe(data).subscribe(res => {
-        this.success = res['success'];
+        this.response = res;
       });
     }
     else {
       saveButton.innerHTML = "Save";
       this.recipeService.deleteSavedRecipe(data).subscribe(res => {
-        this.success = res['success'];
+        this.response = res;
       });
     }
   }
@@ -172,10 +164,6 @@ export class RecipeListComponent implements OnInit {
     this.iEliminatedRecipe = i;
     var modal = document.querySelector('.modal');
     modal.classList.toggle('is-active');
-  }
-
-  loadImage(e) {
-    console.log(e.target);
   }
 
 }

@@ -12,15 +12,15 @@
                 </div>
                 <!--title input-->
                 <div class="field">
-                    <input type="text" name="title" class="input is-primary is-large" placeholder="Title" [(ngModel)]="title" required #titleInput="ngModel">
+                    <input type="text" name="title" class="input is-primary is-large" placeholder="Title" [(ngModel)]="recipe.title" required #titleInput="ngModel">
                 </div>
                 <!--ingredients-->
                 <div class="field" id="iLabel">
                     <label class="label has-text-dark has-text-weight-semibold">List of ingredients:</label>
                 </div>
-                <div class="field has-addons" *ngFor="let ing of ingredients; let i = index; trackBy:customTrackBy;" id="fIng-{{i}}">
+                <div class="field has-addons" *ngFor="let ing of recipe.ingredients; let i = index; trackBy:customTrackBy;" id="fIng-{{i}}">
                     <p class="control is-expanded">
-                        <input type="text" name="ingredient{{i}}" class="input is-primary" placeholder="Ingredient: 100gr. flour" [(ngModel)]="ingredients[i]" required>
+                        <input type="text" name="ingredient{{i}}" class="input is-primary" placeholder="Ingredient: 100gr. flour" [(ngModel)]="recipe.ingredients[i]" required>
                     </p>
                     <p class="control has-icons">
                         <button type="button" class="button has-text-white" title="Delete ingredient" (click)="removeIngredient(i)" id="b1-{{i}}">
@@ -32,14 +32,14 @@
                 </div>
                 <!--new ingredient button-->
                 <div class="field" id="fb-2">
-                    <button type="button" class="button has-text-white" id="b-2"(click)="addIngredient()">New ingredient</button>
+                    <button type="button" class="button has-text-white" id="b-2" (click)="addIngredient()">New ingredient</button>
                 </div>
                 <!--steps-->
                 <div class="field" id="sLabel">
                     <label class="label has-text-dark has-text-weight-semibold">Steps</label>
                 </div>
                 <div class="field" id="textAreaField">
-                    <textarea class="textarea is-primary" name="steps" placeholder="Describe how you made it" [(ngModel)]="steps" required #stepsInput="ngModel"></textarea>
+                    <textarea class="textarea is-primary" name="steps" placeholder="Describe how you made it" [(ngModel)]="recipe.steps" required #stepsInput="ngModel"></textarea>
                 </div>
                 <div class="field">
                     <input style="display: none" type="file" (change)="onFileChanged($event)" #fileInput multiple>

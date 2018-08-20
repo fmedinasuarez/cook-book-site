@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { user } from './user';
+import { credentials } from './credentials';
+import { response } from './response';
 
 @Injectable({
   providedIn: 'root'
@@ -34,12 +37,12 @@ export class UserService {
     return this.http.get(`${this.apiUrl2}/${username}`)
   }
 
-  signUpUser(user) {
-    return this.http.post(`${this.apiUrl}signUp`, user);
+  signUpUser(user:user): Observable<any> {
+    return this.http.post(`${this.apiUrl}signUp/`, user);
   }
 
-  loginUser(credentials) {
-    return this.http.post(`${this.apiUrl}login`, credentials);
+  loginUser(credentials:credentials): Observable<any> {
+    return this.http.post(`${this.apiUrl}login/`, credentials);
   }
 
   chat(data) {

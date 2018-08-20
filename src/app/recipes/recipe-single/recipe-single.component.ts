@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '../../../../node_modules/@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { UserService } from '../../user.service';
 import { RecipeService } from '../../recipe.service';
+import { recipe } from '../../recipe';
+import { response } from '../../response';
 
 @Component({
   selector: 'app-recipe-single',
@@ -11,7 +13,7 @@ import { RecipeService } from '../../recipe.service';
 export class RecipeSingleComponent implements OnInit {
   context;
   
-  recipe;
+  recipe: recipe = null;
   
   title = '';
   ingredients = [];
@@ -24,8 +26,7 @@ export class RecipeSingleComponent implements OnInit {
   showErrorMessage = false;
   errorMessage = '';
 
-  success = '';
-  status = -1;
+  response : response;
 
   currentImg = 0;
 
@@ -39,13 +40,13 @@ export class RecipeSingleComponent implements OnInit {
       var id = recipeTitle_id.slice(recipeTitle_id.lastIndexOf("_")+1, recipeTitle_id.length);
       //Get the recipe bi the _id taken before
       this.recipeService.getRecipeById(id).subscribe( res => {
-        this.status = res['status'];
+        this.response = res;
         //If not error get the recipe
-        if(this.status == 200)
-          this.recipe = res['recipe'];
+        if(this.response.status == 200)
+          this.recipe = this.response.data;
         else {//If error show a message error
           this.showErrorMessage= true;
-          this.errorMessage = res['success'];
+          this.errorMessage = this.response.success;
         }
       })
       //Take the context: my-recipes, saved-recipes or search.
@@ -86,8 +87,7 @@ export class RecipeSingleComponent implements OnInit {
   }
   //Manage click on add new ingreient button
   removeIngredient(i) {
-    var inputIngredient = document.querySelectorAll('.control');
-    if(inputIngredient.length == 7) {
+    if(i == 0 && this.ingredients.length == 1) {
       this.showErrorMessage = true;
       this.errorMessage = "At least one ingredient is required.";
     }
@@ -103,16 +103,13 @@ export class RecipeSingleComponent implements OnInit {
     if(this.eSteps)
       this.recipe.steps = this.steps;
 
-    var data = {
-      "recipe" : this.recipe, 
-    };
-    this.recipeService.editRecipe(data).subscribe(res => {
-      this.status = res['status'];
-      if(this.status == 200) {
-        this.recipe = res['recipe'];
+    this.recipeService.editRecipe(this.recipe).subscribe(res => {
+      this.response = res;
+      if(this.response.status == 200) {
+        this.recipe = this.response.data;
       }
       else {
-        this.errorMessage = res['success'];
+        this.errorMessage = this.response.success;
         this.showErrorMessage = true;
       }
     })
@@ -143,5 +140,19 @@ export class RecipeSingleComponent implements OnInit {
       this.currentImg = 0;
     }
     (imgSlider as HTMLImageElement).src = this.recipe.imagesData[this.currentImg];
+  }
+
+  showButtons() {
+    var prevButtonId = document.getElementById('prevButtonId');
+    prevButtonId.style.display = 'block';
+    var nextButtonId = document.getElementById('nextButtonId');
+    nextButtonId.style.display = 'block';
+  }
+
+  hideButtons() {
+    var prevButtonId = document.getElementById('prevButtonId');
+    prevButtonId.style.display = 'none';
+    var nextButtonId = document.getElementById('nextButtonId');
+    nextButtonId.style.display = 'none';
   }
 }

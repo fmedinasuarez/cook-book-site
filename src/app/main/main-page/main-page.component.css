@@ -43,6 +43,7 @@
     background-color: darkgoldenrod; 
     width: 55%;
     margin: 1%;
+    box-shadow: 2px 2px #000000;
   }
   /*desktop*/
   @media only screen and (min-width: 768px) {

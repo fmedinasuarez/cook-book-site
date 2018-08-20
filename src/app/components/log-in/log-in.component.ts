@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../user.service';
 import { Router } from '@angular/router';
 import { RecipeService } from '../../recipe.service';
+import { credentials } from '../../credentials';
+import { response } from '../../response';
 
 @Component({
   selector: 'app-log-in',
@@ -9,11 +11,13 @@ import { RecipeService } from '../../recipe.service';
   styleUrls: ['log-in.component.css']
 })
 export class LogInComponent implements OnInit {
-  email="";
-  password="";
 
-  success;
-  status;
+  credentials: credentials = {
+    email: '',
+    password: '',
+  }
+
+  response : response = null;
 
   showErrorMessage=false;
   errorMessage;
@@ -34,30 +38,24 @@ export class LogInComponent implements OnInit {
   }
 
   processLoginForm(){
-    var credentials = {
-      "email": this.email,
-      "password": this.password
-    }
-
     var logInButton = document.getElementById('logInButton');
 
-    this.userService.loginUser(credentials).subscribe( res => {
-      console.log(res);
-      this.success = res['success'];
-      this.status = res['status'];
+    this.userService.loginUser(this.credentials).subscribe( res => {
+      this.response = res;
+      console.log(this.response);
 
-      if(this.status == 500) {
+      if(this.response.status == 500) {
         logInButton.innerHTML = "Log in error";
         this.showErrorMessage = true;
-        this.errorMessage = this.success;
+        this.errorMessage = this.response.success;
       }
 
-      if(this.status == 200) {
+      if(this.response.status == 200) {
         setTimeout(()=>{
           logInButton.innerHTML = "Log in successfull";
           setTimeout(() => {
             this.userService.setLoggedIn(true);
-            this.recipeService.setUserData(this.email);
+            this.recipeService.setUserData(this.credentials.email);
             this.router.navigate(['main']);
           },500);
         },500);

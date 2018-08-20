@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { RequestOptions } from '@angular/http';
-import { BehaviorSubject } from '../../node_modules/rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { recipe } from './recipe';
 
 @Injectable({
   providedIn: 'root'
@@ -31,40 +32,40 @@ export class RecipeService {
     return this.searchBarToHeaderStatus.asObservable();
   }
 
-  addRecipe(recipe) {
+  addRecipe(recipe: recipe):Observable<any> {
     return this.http.post(`${this.apiUrl}addRecipe`, recipe);
   }
 
-  getMyRecipes() {
+  getMyRecipes():Observable<any> {
     return this.http.get(`${this.apiUrl}myRecipes/${this.userDataStatus}`);
   }
 
-  getRecipesByTitle(title) {
+  getRecipesByTitle(title:string):Observable<any> {
     return this.http.get(`${this.apiUrl}recipesByTitle/${title}`);
   }
 
-  saveRecipe(data) {
+  saveRecipe(data):Observable<any> {
     return this.http.put(`${this.apiUrl}saveRecipe`, data);
   }
 
-  getSavedRecipes() {
+  getSavedRecipes():Observable<any> {
     return this.http.get(`${this.apiUrl}savedRecipes/${this.userDataStatus}`);
   }
 
-  deleteSavedRecipe(data) {
+  deleteSavedRecipe(data):Observable<any> {
     return this.http.post(`${this.apiUrl}deleteSavedRecipe`,data);
   }
 
-  getRecipeById(id) {
+  getRecipeById(id):Observable<any> {
     return this.http.get(`${this.apiUrl}recipeById/${id}`);
   }
 
-  deleteMyRecipe(data) {
+  deleteMyRecipe(data):Observable<any> {
     return this.http.post(`${this.apiUrl}deleteMyRecipe`,data);
   }
 
-  editRecipe(data) {
-    return this.http.put(`${this.apiUrl}editRecipe`,data);
+  editRecipe(recipe: recipe):Observable<any> {
+    return this.http.put(`${this.apiUrl}editRecipe`, recipe);
   }
 
 }

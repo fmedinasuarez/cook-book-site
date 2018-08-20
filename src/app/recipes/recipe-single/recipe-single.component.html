@@ -10,14 +10,14 @@
                         </p><br>
                     </div>
                     <!--Image Slider-->
-                    <div class="imageSliderContainer" *ngIf="recipe.imagesData[0]">
-                        <button class="button" type="button" id="prevButtonId" (click)=prevImg()>
+                    <div class="imageSliderContainer" *ngIf="recipe.imagesData[0]" (mouseover)="showButtons()" (mouseout)="hideButtons()">
+                        <button class="button" type="button" id="prevButtonId" (click)="prevImg()" style="display: none">
                             <span class="icon is-small has-text-white">
                                 <i class="fa fa-arrow-circle-left"></i>
                             </span>
                         </button>
                         <img src="{{recipe.imagesData[0]}}" id="imgSlider">
-                        <button class="button" type="button" id="nextButtonId" (click)=nextImg()>
+                        <button class="button" type="button" id="nextButtonId" (click)="nextImg()" style="display: none">
                             <span class="icon is-small has-text-white">
                                 <i class="fa fa-arrow-circle-right"></i>
                             </span>

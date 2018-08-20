@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { RecipeService } from '../recipe.service';
 import { UserService } from '../user.service';
+import { recipe } from '../recipe';
+import { response } from '../response';
 
 @Component({
   selector: 'app-search-bar',
@@ -11,11 +13,10 @@ import { UserService } from '../user.service';
 export class SearchBarComponent implements OnInit {
   recipeName = '';
 
-  results = [];
+  results: Array<recipe> = [];
   values = '';
 
-  success;
-  status;
+  response : response;
 
   searchBarToHeader = false;
   isLoggedIn;
@@ -77,13 +78,10 @@ export class SearchBarComponent implements OnInit {
     this.values = event.target.value;
     if(this.values != '') {
       this.recipeService.getRecipesByTitle(this.values).subscribe(res => {
-        this.status = res['status'];
-        if(this.status == 200){
-          let set = {}, recipes = res['recipes'];
+        this.response = res;
+        if(this.response.status == 200){
+          let set = {}, recipes = this.response.data;
           this.results = (recipes.filter(obj => !set[obj.title] && (set[obj.title] = true))).slice(0,6);
-        }
-        else {
-          this.success = res['success'];
         }
       })
     }
